@@ -25,35 +25,36 @@ const articles = [
     { id: 24, slug: '', title: '市調問卷設計', subtitle: '基礎通識', cover: './image/hero-bg.jpg', summary: '市調問卷撰寫、合作與回收分析的注意事項。' }
 ];
 
-// --- 新增：依照 Subtitle 進行排序 ---
-// 使用 localeCompare 進行中文排序，如果 Subtitle 相同，則依照 ID 排序確保穩定性
-articles.sort((a, b) => {
-    // 處理可能的 undefined 或 null
-    const subA = a.subtitle || '';
-    const subB = b.subtitle || '';
-    
-    // 先比較 subtitle
-    const comparison = subA.localeCompare(subB, 'zh-TW');
-    
-    // 如果 subtitle 一樣，則依照 id 排序 (保持原本的順序邏輯)
-    return comparison !== 0 ? comparison : a.id - b.id;
-});
-
 // 提供給其他腳本使用
 window.articles = articles;
 
 function renderSitemap(items) {
     const sitemapListEl = document.getElementById('sitemap-list');
     if (!sitemapListEl) return;
-    sitemapListEl.innerHTML = items.map(item => `
-        <a href="./${item.slug}.html" class="sitemap-link group">
-            <div class="flex items-start">
-                <div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-hanlin-blue">${item.title}</h3>
-                    <p class="text-xs text-gray-500">${item.summary || ''}</p>
-                </div>
+
+    const grouped = items.reduce((acc, item) => {
+        const key = item.subtitle || '其他';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+    }, {});
+
+    sitemapListEl.innerHTML = Object.entries(grouped).map(([subtitle, entries]) => `
+        <section class="space-y-3">
+            <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">${subtitle}</div>
+            <div class="space-y-4">
+                ${entries.map(item => `
+                    <a href="./${item.slug}.html" class="sitemap-link group">
+                        <div class="flex items-start">
+                            <div>
+                                <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-hanlin-blue">${item.title}</h3>
+                                <p class="text-xs text-gray-500">${item.summary || ''}</p>
+                            </div>
+                        </div>
+                    </a>
+                `).join('')}
             </div>
-        </a>
+        </section>
     `).join('');
 }
 
@@ -63,7 +64,14 @@ window.renderSitemap = renderSitemap;
 function renderHomeCards(items) {
     const grid = document.getElementById('articles-grid');
     if (!grid) return;
-    grid.innerHTML = items.map(item => {
+    const grouped = items.reduce((acc, item) => {
+        const key = item.subtitle || '其他';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+    }, {});
+
+    const renderCard = item => {
         const cover = item.cover || './image/hero-bg.jpg';
         return `
             <div class="article-card bg-white border border-gray-100 group relative flex flex-col h-full">
@@ -71,7 +79,6 @@ function renderHomeCards(items) {
                     <img src="${cover}" alt="${item.title}" class="w-full h-48 object-cover transform transition duration-300 group-hover:scale-105">
                 </a>
                 <div class="p-6 flex flex-col flex-grow">
-                    <p class="text-sm font-semibold text-hanlin-blue uppercase tracking-wider mb-2">${item.subtitle || ''}</p>
                     <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-hanlin-blue transition duration-300">
                         <a href="./${item.slug}.html">${item.title}</a>
                     </h3>
@@ -85,7 +92,17 @@ function renderHomeCards(items) {
                 </div>
             </div>
         `;
-    }).join('');
+    };
+
+    grid.innerHTML = Object.entries(grouped)
+        .map(([subtitle, items]) => `
+            <section class="space-y-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 border-b-2 border-hanlin-blue pb-3">${subtitle}</h2>
+                <div class="grid gap-10 lg:grid-cols-3 md:grid-cols-2">
+                    ${items.map(renderCard).join('')}
+                </div>
+            </section>
+        `).join('');
 }
 
 function setupNavigation() {
