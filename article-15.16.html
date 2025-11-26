@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數位部全學制集檔流程 | 翰林北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 1. 引入配色設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        .prose ol {
+            @apply list-decimal pl-6 mb-8;
+        }
+        .prose ol li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md border border-gray-200;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 mt-3 italic;
+        }
+
+        /* 表格樣式 */
+        .table-container {
+            @apply overflow-x-auto mb-8 rounded-lg border border-gray-200 shadow-sm;
+        }
+        .prose table {
+            @apply min-w-full divide-y divide-gray-300;
+        }
+        .prose thead {
+            @apply bg-blue-50;
+        }
+        .prose th {
+            @apply px-3 py-3.5 text-left text-sm font-bold text-hanlin-blue whitespace-nowrap;
+        }
+        .prose td {
+            @apply px-3 py-4 text-sm text-gray-600 border-t border-gray-100 align-top;
+        }
+        .prose tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- 麵包屑導航 -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">第十五、十六單元</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <!-- 主標題 -->
+                <h1>臺北研發處編輯手冊 15、16：數位部全學制集檔流程</h1>
+                
+                <!-- 引言區塊 -->
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-0 font-medium !text-hanlin-blue">本單元說明數位資源庫的集檔作業流程、檔案規範、權限設定與常見問題，適用於幼教、國小、國中及高中學制。</p>
+                </div>
+
+                <!-- ==================== 內容開始 ==================== -->
+                <h2>一、集檔流程</h2>
+
+                <figure>
+                    <img src="./image/article-15-flowchart.jpg" alt="集檔流程圖" onerror="this.onerror=null;this.src='https://placehold.co/800x300/EBF4FF/005CA1?text=設定資料夾+%E2%9E%94+%E4%B8%8A%E5%82%B3+%E2%9E%94+%E6%AA%A2%E6%9F%A5%E7%A2%BA%E8%AA%8D+%E2%9E%94+%E9%8E%96%E5%AE%9A+%E2%9E%94+%E4%B8%8B%E8%BC%89';">
+                    <figcaption>圖 15-1：集檔工作流程</figcaption>
+                </figure>
+                
+                <ol>
+                    <li><strong>設定資料夾</strong>：權責單位建立與設定。</li>
+                    <li><strong>上傳</strong>：上傳人員上傳檔案。若未完整（檔案有誤），需重新上傳。</li>
+                    <li><strong>檢查確認</strong>：確認人員檢查檔案。</li>
+                    <li><strong>鎖定</strong>：確認無誤後鎖定。若鎖定後發現有誤，需通知解鎖。</li>
+                    <li><strong>下載</strong>：下載人員下載最終檔案。</li>
+                </ol>
+
+                <h2>二、數位資源庫功能說明</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>角色</th>
+                                <th>功能</th>
+                                <th>操作說明</th>
+                                <th>權責單位（幼小科）</th>
+                                <th>權責單位（中高科）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2" class="font-bold">上傳人員</td>
+                                <td>個別上傳</td>
+                                <td>
+                                    1. 依資料夾編號選取檔案。<br>
+                                    2. 點選「檢查檔案」後開始上傳。<br>
+                                    3. 對單一資料夾按右鍵 →「變更資料夾狀態」→ 改為「已完整」。
+                                </td>
+                                <td rowspan="2">美編部、企劃部、設計部、編管部專案科</td>
+                                <td rowspan="2">美編部、企劃部、編管部專案科、設計部</td>
+                            </tr>
+                            <tr>
+                                <td>批次上傳</td>
+                                <td>
+                                    1. 準備結構一致的資料夾。<br>
+                                    2. 點選「檢查資料夾」與「檢查檔案」。<br>
+                                    3. 確認無誤後一次上傳。<br>
+                                    4. 勾選多個資料夾 →「批次變更狀態」→ 改為「已完整」。
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="font-bold">確認(鎖定)<br>人員</td>
+                                <td>個別確認</td>
+                                <td>
+                                    1. 檢查檔案數量，並預覽或開啟檢查內容。<br>
+                                    2. 無誤改為「鎖定」；有誤改為「未完整」。
+                                </td>
+                                <td rowspan="2">幼教/國小領域編輯、企劃部編一部、編管部專案科</td>
+                                <td rowspan="2">國/高中領域編輯、企劃部、編管部專案科、設計部</td>
+                            </tr>
+                            <tr>
+                                <td>批次確認</td>
+                                <td>勾選多個資料夾後，按「批次確認」。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">解鎖人員</td>
+                                <td>解鎖</td>
+                                <td>當檔案鎖定後須異動（如刪檔、補檔、更新），請向數位部各領域窗口提出解鎖需求。</td>
+                                <td>數位部幼小教學科</td>
+                                <td>數位部中高教學科</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="font-bold">下載人員</td>
+                                <td>批次下載</td>
+                                <td>以根資料夾編號找到產品全部資料夾，按「下載資料夾」集檔下載。</td>
+                                <td rowspan="2">幼教/國小領域編輯、美編部、企劃部、編管部專案科、編一部、行銷處</td>
+                                <td rowspan="2">國/高中領域編輯、美編部、企劃部、編管部專案科、設計部</td>
+                            </tr>
+                            <tr>
+                                <td>個別下載</td>
+                                <td>檢視資料夾，勾選檔案後按「下載檔案」，或搜尋檔案下載。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>三、檔案上傳規範</h2>
+
+                <h4>檔名規範</h4>
+                <p><strong>格式：</strong>序號＋年度＋學制＋領域＋年級(1)＋學期＋科目＋產品＋章(課)＋其他</p>
+                <ul>
+                    <li><strong>國中的年級標示</strong>：統一為 1、2、3。</li>
+                    <li><strong>符號運用</strong>：以「清楚識別」為原則。</li>
+                </ul>
+                <div class="bg-gray-50 p-4 rounded-md border border-gray-200 mb-6">
+                    <p class="font-bold mb-2">範例：</p>
+                    <ul class="list-none pl-0 mb-0 space-y-2 font-mono text-sm text-gray-600">
+                        <li>教科書PDF (國小)：01-113 國小社會 3 上課本 - 目次 -0604.pdf</li>
+                        <li>教科書PDF (國中)：01-113 國中社會 1 下地理課本 - 目次 -0604.pdf</li>
+                        <li>影音檔案：01-XXXXXXXX.mp4</li>
+                    </ul>
+                </div>
+
+                <h4>多媒體音量規範</h4>
+                <p>自 114 上學期起陸續統一各式媒體來源音量，詳細文件請參閱 2025/4/30 內聯單(數位聯)。</p>
+                <ul>
+                    <li><strong>MP3 音量標準：</strong>92dB (可接受差異 ±2 dB，以 MP3Gain 測量)</li>
+                    <li><strong>MP4 音量標準：</strong>94dB (可接受差異 ±2 dB，以 MP3Gain / Xmedia Recode 測量)</li>
+                </ul>
+
+                <h2>四、資料夾狀態</h2>
+                <p>資料夾狀態依序為：<strong>未完整 ➜ 已完整 ➜ 鎖定</strong>。</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>資料夾狀態</th>
+                                <th>時間點</th>
+                                <th>說明與操作者</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold text-gray-400">禁止上傳</td>
+                                <td>資料夾建立時</td>
+                                <td>由資料夾管理員指定（通常為樹狀結構的上層，不放檔案）。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-gray-500">無檔案</td>
+                                <td>建立資料夾時</td>
+                                <td>由資料夾管理員指定（有設定上傳人員，但尚未上傳）。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-red-500">未完整</td>
+                                <td>上傳檔案時</td>
+                                <td>上傳後程式自動變更。後續可能由確認/解鎖人員因檔案有誤手動變更。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-blue-500">已完整</td>
+                                <td>檔案上傳完畢</td>
+                                <td>若滿足預填檔案則自動變更，否則須由<strong>上傳人員手動變更</strong>。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-green-600">鎖定</td>
+                                <td>檢查確認無誤</td>
+                                <td>由<strong>確認人員手動變更</strong>。鎖定後禁止異動。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-sm bg-yellow-50 text-yellow-800 p-4 rounded-lg border border-yellow-200">
+                    <strong>※ 特別說明：</strong>
+                    <br>資料夾狀態在「未完整」或「已完整」時，上傳人員仍可上傳或刪除檔案。一旦進入「鎖定」狀態，即禁止異動以避免版本錯亂。若必須修改，需聯繫解鎖人員變更狀態。
+                </div>
+
+                <h2>五、資料夾開立時程與權限設定</h2>
+                
+                <h4>預計開立時程</h4>
+                <ul>
+                    <li><strong>上學期：</strong>10 月底</li>
+                    <li><strong>下學期：</strong>5 月底（預計上傳初審本時間）</li>
+                </ul>
+
+                <h4>人員權限設定</h4>
+                <ul>
+                    <li>數位部將在領域小組確認權限人員是否有異動。</li>
+                    <li>若需增加/修改權限人員，請向<strong>數位部各領域窗口</strong>（數位企編/編輯）提出。</li>
+                    <li>若無對應窗口，請單位主管找數位部科主管申請。</li>
+                </ul>
+
+                <h2>六、Email 通知機制</h2>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>事件狀態</th>
+                                <th>觸發時機</th>
+                                <th>發信者</th>
+                                <th>通知對象</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">通知上傳</td>
+                                <td>全部資料夾設定完成時</td>
+                                <td>資料夾管理員</td>
+                                <td>上傳人員</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">上傳已完整</td>
+                                <td>檔案上傳完畢且變更為已完整</td>
+                                <td>上傳人員</td>
+                                <td>上傳、確認人員</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">確認鎖定</td>
+                                <td>確認正確無誤並鎖定</td>
+                                <td>確認人員</td>
+                                <td>上傳、確認、下載人員</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">確認未完整</td>
+                                <td>確認有誤，退回未完整</td>
+                                <td>確認人員</td>
+                                <td>上傳、確認、下載人員</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">已解鎖</td>
+                                <td>已鎖定資料夾需異動</td>
+                                <td>解鎖人員</td>
+                                <td>上傳、確認、下載人員</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-red-500">逾期/即將到期通知</td>
+                                <td>依據預計完成日與目前狀態判斷</td>
+                                <td>系統（每日 7:00）</td>
+                                <td>相關人員</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>七、常見 Q&A</h2>
+
+                <h4>Q1：上傳錯檔案，如何「刪除」檔案？</h4>
+                <p>若想刪除整包資料夾，必須先將資料夾裡的檔案<strong>全部刪除</strong>，才能刪除資料夾。</p>
+                <figure>
+                    <img src="./image/article-15-qa1.jpg" alt="刪除檔案教學" onerror="this.onerror=null;this.src='https://placehold.co/800x400/EBF4FF/005CA1?text=Q1+%E5%88%AA%E9%99%A4%E6%AA%94%E6%A1%88%E6%AD%A5%E9%A9%9F%EF%BC%9A1.%E5%88%87%E6%8F%9B%E5%80%8B%E5%88%A5%E4%B8%8A%E5%82%B3+2.%E5%8B%BE%E9%81%B8%E6%AA%94%E6%A1%88+3.%E9%BB%9E%E9%81%B8%E5%88%AA%E9%99%A4';">
+                    <figcaption>操作步驟：1. 切換頁籤「個別上傳」 2. 勾選欲刪除檔案 3. 點選刪除檔案。</figcaption>
+                </figure>
+
+                <h4>Q2：美編上傳檔案改為「已完整」，編輯如何鎖定？</h4>
+                <p>編輯確認檔案無誤後，需手動將狀態變更為「鎖定」。</p>
+                <figure>
+                    <img src="./image/article-15-qa2.jpg" alt="鎖定檔案教學" onerror="this.onerror=null;this.src='https://placehold.co/800x400/EBF4FF/005CA1?text=Q2+%E9%8E%96%E5%AE%9A%E6%AD%A5%E9%A9%9F%EF%BC%9A1.%E8%B3%87%E6%96%99%E5%A4%BE%E5%8F%B3%E9%8D%B5%E3%80%8C%E8%AE%8A%E6%9B%B4%E7%8B%80%E6%85%8B%E3%80%8D+2.%E9%81%B8%E6%93%87%E3%80%8C%E9%8E%96%E5%AE%9A%E3%80%8D';">
+                    <figcaption>操作步驟：1. 在資料夾按右鍵選「變更資料夾狀態」 2. 將狀態由「已完整」改為「鎖定」並確定。</figcaption>
+                </figure>
+
+            </div>
+
+            <!-- 返回連結 -->
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. 頁腳 (Footer) -->
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    <!-- 6. 腳本 -->
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

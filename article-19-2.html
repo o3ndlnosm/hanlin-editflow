@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品檢流程、彩稿管理 | 翰林北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 1. 引入配色設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        .prose ol {
+            @apply list-decimal pl-6 mb-8;
+        }
+        .prose ol li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md border border-gray-200;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 mt-3 italic;
+        }
+
+        /* 警告區塊 */
+        .alert-box {
+            @apply bg-red-50 border-l-4 border-red-500 p-4 my-6 rounded-r-lg;
+        }
+        .alert-title {
+            @apply font-bold text-red-700 mb-1 block;
+        }
+        .alert-content {
+            @apply text-red-600 text-sm mb-0;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- 麵包屑導航 -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">第十九單元 (2)</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <!-- 主標題 -->
+                <h1>臺北研發處編輯手冊 19-2：品檢流程、彩稿管理</h1>
+                
+                <!-- 引言區塊 -->
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-0 font-medium !text-hanlin-blue">本單元說明印刷完成後的品檢程序、裝訂同意書簽核規範，以及當發現嚴重瑕疵時的重印決策流程。</p>
+                </div>
+
+                <!-- ==================== 內容開始 ==================== -->
+                <h2>一、品檢流程</h2>
+                <p>當生產部或委外廠商完成印刷後，會將尚未裝訂的<strong>半成品</strong>交付編管部。流程如下：</p>
+                
+                <ol class="list-decimal pl-5 space-y-2">
+                    <li><strong>印務檢視：</strong>確認全冊台數皆完備齊全。</li>
+                    <li><strong>權責單位檢視：</strong>經負責人員（責編、美編）詳細檢查內容與品質。</li>
+                    <li><strong>簽署同意書：</strong>檢查無誤後，於<strong>【印刷後、裝訂前品質檢核與裝訂同意書】</strong>上簽名，始可進行裝訂。</li>
+                </ol>
+
+                <h2>二、裝訂同意書注意事項</h2>
+                <p>為確保生產時效與品質，簽署裝訂同意書時請務必遵守以下規範：</p>
+
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
+                    <ul class="list-none space-y-3 pl-0 mb-0">
+                        <li class="flex items-start">
+                            <span class="text-hanlin-blue font-bold mr-2">1.</span>
+                            <span><strong>簽核欄位不可空白：</strong>領域主編及美編組長必須簽名，若無法親簽需請代理人協助。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-hanlin-blue font-bold mr-2">2.</span>
+                            <span><strong>檢視順序可調整：</strong>可視情況彈性調整領域與美編的檢視順序（例如：美編先檢視再給領域）。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-hanlin-blue font-bold mr-2">3.</span>
+                            <span><strong>當日回傳原則：</strong>各單位收到品檢後應盡快確認，印務需於<strong>當日</strong>回傳同意書給生產單位。若無法當日完成，務必提早告知印務。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 font-bold mr-2">4.</span>
+                            <span class="text-red-600"><strong>急件處理：</strong>若遇急件，各關卡負責人務必於<strong>下午 3 點前</strong>簽核完畢並交付印務。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-hanlin-blue font-bold mr-2">5.</span>
+                            <span><strong>留存規範：</strong>流程完成後，印務會將品檢本及彩稿歸還給責任文編，需留存至該冊次課程結束後。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2>三、重印流程</h2>
+                <p>若在檢視品檢本時發現重大錯誤或瑕疵，需啟動重印流程。依據錯誤類型分為以下兩種處理路徑：</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    
+                    <!-- 狀況一：內容錯誤 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="bg-blue-50 p-4 border-b border-blue-100">
+                            <h4 class="text-lg font-bold text-hanlin-blue !mt-0 !mb-0 !border-0 !pl-0 !bg-transparent">狀況 A：發現內容需再修改</h4>
+                        </div>
+                        <div class="p-5 bg-white">
+                            <ol class="list-decimal pl-5 space-y-2 text-sm text-gray-700">
+                                <li><strong>立即通知：</strong>發現錯誤時，立即通知印務。</li>
+                                <li><strong>成本評估：</strong>印務確認印量及台數，提供印製成本給責任單位。</li>
+                                <li><strong>決策：</strong>責任單位上報編審或協理，或上呈行銷處裁決是否重製。</li>
+                                <li><strong>送單：</strong>確認重印後，通知編務及印務，進行<strong>勘誤出版單</strong>的送製。</li>
+                                <li><strong>通報：</strong>填寫「異常通報單」或「事故報告書」，上呈簽核（詳見 GOZ008 辦法）。</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- 狀況二：顏色瑕疵 -->
+                    <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="bg-orange-50 p-4 border-b border-orange-100">
+                            <h4 class="text-lg font-bold text-orange-800 !mt-0 !mb-0 !border-0 !pl-0 !bg-transparent">狀況 B：印刷顏色有重大瑕疵</h4>
+                        </div>
+                        <div class="p-5 bg-white">
+                            <ol class="list-decimal pl-5 space-y-2 text-sm text-gray-700">
+                                <li><strong>請示確認：</strong>請示編審或協理，並上呈行銷處確認重製時間是否符合需求日。</li>
+                                <li><strong>通知主管：</strong>確定重印後，立即通知印務及編管部單位主管。</li>
+                                <li><strong>協調：</strong>由編管單位主管與生產單位主管協調。若無共識，上呈營運長裁決。</li>
+                                <li><strong>通報：</strong>「異常通報單」由<strong>印務</strong>填寫，上呈相關單位簽核。</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 返回連結 -->
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. 頁腳 (Footer) -->
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    <!-- 6. 腳本 -->
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

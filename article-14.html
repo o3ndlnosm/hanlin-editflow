@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>諮詢會議工作流程 | 翰林北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 1. 引入配色設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md border border-gray-200;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 mt-3 italic;
+        }
+
+        /* 表格樣式 */
+        .prose table {
+            @apply min-w-full divide-y divide-gray-300 border border-gray-200 mb-8;
+        }
+        .prose thead {
+            @apply bg-gray-50;
+        }
+        .prose th {
+            @apply px-3 py-3.5 text-left text-sm font-semibold text-gray-900 bg-blue-50;
+        }
+        .prose td {
+            @apply whitespace-normal px-3 py-4 text-sm text-gray-500 border-t border-gray-200;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- 麵包屑導航 -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">第十四單元</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <!-- 主標題 -->
+                <h1>臺北研發處編輯手冊 14：諮詢會議工作流程</h1>
+                
+                <!-- 引言區塊 -->
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-2 font-medium !text-hanlin-blue">目的：</p>
+                    <p class="!mb-0 !text-gray-700">為讓所研發的教材能符合老師教學，適合學生學習，特舉辦諮詢會議，提供作者團隊諮詢意見，致使教材品質更臻完善，特制定本辦法。</p>
+                </div>
+
+                <!-- ==================== 內容開始 ==================== -->
+                <h2>一、適用範圍與職責</h2>
+
+                <h3>適用範圍</h3>
+                <p>適用於翰林出版之<strong>國小、國中、高中</strong>教科書研發。</p>
+
+                <h3>職責分工</h3>
+                <ul>
+                    <li><strong>領域編輯</strong>：負責「審本諮詢」活動的規劃與執行。</li>
+                    <li><strong>企劃單位</strong>：負責「成書諮詢」活動的規劃與執行。</li>
+                    <li><strong>行銷處</strong>：配合協尋諮詢老師，並支援活動執行。</li>
+                    <li><strong>協辦單位</strong>：教研、數位企劃、美編需配合參與會議。</li>
+                </ul>
+
+                <h2>二、諮詢作業程序</h2>
+
+                <h4>諮詢對象與目的</h4>
+                <ul>
+                    <li><strong>對象</strong>：諮詢老師是指編撰團隊以外的人士。</li>
+                    <li><strong>目的</strong>：提供意見給編撰團隊、文編、美編、企劃、教研、數位及領域經理人，作為編修教材的參考。</li>
+                </ul>
+
+                <h4>諮詢老師來源與規範</h4>
+                <ul>
+                    <li><strong>來源</strong>：對該領域教學頗有研究及熱心者。若具有輔導團成員身分或為該校領域召集人資格者更佳。</li>
+                    <li><strong>人數</strong>：為顧及諮詢會議品質，參與的諮詢老師應至少 <strong>5 位以上</strong>。</li>
+                    <li><strong>更新機制</strong>：應適時檢視並進行增補或汰換，以更換新血來帶動新鮮概念活化組織。若諮詢老師出席座談會卻未提供建設性意見或態度消極，應註記於諮詢名單中，並通知該區區經理不再邀約。</li>
+                </ul>
+
+                <h4>費用給付</h4>
+                <p>針對為諮詢座談或諮詢本而邀約之老師，採<strong>按場次給付</strong>及<strong>以件計酬制</strong>。</p>
+
+                <h3>諮詢作業階段</h3>
+                <p>諮詢作業依時間軸分為開編、編撰、成書三個階段，詳細定義如下表：</p>
+
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="w-1/4">諮詢階段</th>
+                                <th class="w-1/4">諮詢類別</th>
+                                <th class="w-1/2">定義與執行內容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2" class="font-bold text-hanlin-blue">編撰階段<br><span class="text-xs text-gray-500 font-normal">(出版前)</span></td>
+                                <td class="font-bold">定稿諮詢<br>(送審前諮詢)</td>
+                                <td>
+                                    <ul class="list-none pl-0 mb-0">
+                                        <li><strong>開編階段</strong>：新編或修訂之送審冊次課程架構諮詢（依各領域需求進行）。</li>
+                                        <li><strong>編撰階段</strong>：蒐集教師對審本定稿後之教材意見，針對知識正確性、課文敘述邏輯性、圖照合適性、是否符合課綱等給予意見。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">審本諮詢</td>
+                                <td>各審次審本諮詢（依各領域需求進行）。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold text-hanlin-blue">成書階段<br><span class="text-xs text-gray-500 font-normal">(出版後)</span></td>
+                                <td class="font-bold">成書諮詢</td>
+                                <td>教材上市後，蒐集並記錄教師實際使用的教材意見。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>三、執行作業事項</h2>
+
+                <figure>
+                    <img src="./image/article-14-flowchart.jpg" alt="諮詢會議工作流程圖" onerror="this.onerror=null;this.src='https://placehold.co/800x400/EBF4FF/005CA1?text=附件五：諮詢會議工作流程圖';">
+                    <figcaption>圖 14-1：諮詢會議工作流程示意圖</figcaption>
+                </figure>
+
+                <h4>1. 會前準備</h4>
+                <ul>
+                    <li><strong>確認場次與名單</strong>：由負責單位與行銷處確認座談會的場次、地點、時間，以及出席老師名單。</li>
+                    <li><strong>提報規劃書</strong>：由負責單位撰寫諮詢規劃書（詳見附件範例），經簽呈核准後推動執行。</li>
+                    <li><strong>行政準備事項</strong>：
+                        <ul class="list-[circle]">
+                            <li>製作桌名牌、迎賓海報、諮詢費收據。</li>
+                            <li>預支諮詢會議費用（含諮詢費、餐點及場地費）。</li>
+                            <li>預定場地及餐點（務必索取打統編之發票或合格收據）。</li>
+                            <li>確認交通事宜。</li>
+                            <li>準備諮詢稿件（諮詢本、現行版教科書等）與設計諮詢問卷（紙本或線上表單）。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>2. 會議執行及注意事項</h4>
+                <ul>
+                    <li><strong>場地布置</strong>：安排座位、確認投影設備、擺放名牌。</li>
+                    <li><strong>接待與資料確認</strong>：點收及發放餐點、檢查諮詢費收據填寫資料是否詳備（地址須含鄰里）。</li>
+                    <li><strong>會議進行</strong>：
+                        <ul class="list-[circle]">
+                            <li>由負責單位記錄會議內容（含意見提供者姓名）。</li>
+                            <li>主持人須主動引導各諮詢老師發言。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>3. 會議後處理</h4>
+                <ul>
+                    <li><strong>場復與回收</strong>：回收諮詢資料（含問卷）、恢復場地。</li>
+                    <li><strong>紀錄與核銷</strong>：彙整會議紀錄提供相關人員、進行各場次費用核銷。</li>
+                </ul>
+
+                <h2>四、相關附件範例</h2>
+
+                <h3>成書諮詢規劃書（參考範例）</h3>
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-sm mb-8">
+                    <p><strong>主旨：</strong>國小OO領域擬針對新綱O下教材舉辦諮詢座談，請 鈞長同意。</p>
+                    <p><strong>一、目的：</strong>為因應114學年四自教材修訂，需廣納市場意見，作為教材修改依據。</p>
+                    <p><strong>二、對象：</strong>限113下使用翰林O自教師。</p>
+                    <p><strong>三、場次與費用：</strong></p>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>教師人數：每場7人（3人預備）。</li>
+                        <li>出席費：一位教師 3,000 元/2小時（含交通費）。</li>
+                        <li>餐費：預估一人 300 元。</li>
+                    </ul>
+                    <p><strong>四、預算表：</strong></p>
+                    <table class="min-w-full divide-y divide-gray-300 border border-gray-200 bg-white">
+                        <thead>
+                            <tr>
+                                <th class="px-2 py-2">區域</th>
+                                <th class="px-2 py-2">說明</th>
+                                <th class="px-2 py-2">預估費用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-2 py-2">桃園區</td>
+                                <td class="px-2 py-2">使用諮詢表單，預計10人</td>
+                                <td class="px-2 py-2">30,000元</td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-2">中五區</td>
+                                <td class="px-2 py-2">舉辦實體座談，預計10人</td>
+                                <td class="px-2 py-2">39,500元<br><span class="text-xs text-gray-400">(含場地與餐費)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-2 py-2 font-bold">合計</td>
+                                <td class="px-2 py-2"></td>
+                                <td class="px-2 py-2 font-bold text-hanlin-blue">69,500元</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-4"><strong>五、注意事項：</strong>各區邀約勇於發言並給予具體意見供我們優化教材的老師，如果沒有適合的老師，可以不辦諮詢會議，改以其他方式諮詢。</p>
+                </div>
+
+            </div>
+
+            <!-- 返回連結 -->
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. 頁腳 (Footer) -->
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    <!-- 6. 腳本 -->
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於翰林與教科書製作流程 | 北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 (配色已改為 Hanlin 系統) --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) - 使用 hanlin-blue */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) - 左側線條改深藍，底色改淺藍 */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 - 改深藍 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 - 改深藍，Hover 變淺 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10 bg-gray-50 p-4 rounded-lg border border-gray-200;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md mb-3;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 italic;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">Chapter 1 & 3</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <h1>北研編輯手冊：關於翰林與教科書製作流程</h1>
+                
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-4 font-medium !text-hanlin-blue !mb-2">本手冊內容涵蓋翰林出版的品牌精神與核心價值，以及教科書製作中至關重要的「設計與規劃」流程。</p>
+                    <ul class="list-none pl-0 mb-0 !mb-0">
+                        <li class="mb-2"><strong>Chapter 1 關於翰林：</strong>從創立故事、數位轉型到「相信學習」的品牌理念。</li>
+                        <li><strong>Chapter 3 教科書製作流程：</strong>深入探討編輯與美編的協作、落版會議的執行，以及如何透過視覺設計提升學習成效。</li>
+                    </ul>
+                </div>
+
+                <h2>Chapter 1 ｜ 關於翰林</h2>
+
+                <h3>創立故事：走過半世紀的教育之旅</h3>
+                <p>創辦人陳天賜先生出身農村，與夫人結婚後舉家搬遷至臺南，任職於臺南的日本紡織廠。雖然為了生計奔波，但陳天賜先生仍在工作之餘寫作投稿，始終不忘自己對於文學的熱愛。</p>
+                <p>1959 年，他與夫人於臺南開辦出版社，從販售武俠小書起家，並在 1960 年代起轉向教育出版，專注出版參考書與測驗卷。「翰林」二字，既是古代官名，更有翰墨薈萃如林的寄託，也是創辦人對古代「翰林書院」的嚮往。</p>
+                <p>1990 年代，臺灣的教育改革浪潮為教科產業帶來了劇烈的變動。因應課綱的變動與一綱多本的新制度，翰林憑藉豐富的教育出版經驗，逐步奠定「三大教科書出版社之一」的地位。</p>
+
+                <h3>從紙本走向數位，迎向科技的新時代</h3>
+                <p>隨著千禧年的到來，2009 年，翰林成立數位部門，開始進行教材的數位化；並於 2017 年成立子公司「翰林教育科技」，開發翰林雲端學院、行動大師等平臺，逐漸轉型為教育科技集團。</p>
+                <p>2020 年面對世界大疫，翰林「防疫不停學」平臺單日服務超過一萬個班級。在後疫情時代，翰林線上教學成為了教育界新的藍海，至今有超過 110 萬名師生在翰林雲端學院進行學習。</p>
+                <p>此外，翰林也設立明光文教事業股份有限公司，與日本明光義塾、百大教育集團及翰林建設合作，在臺灣投資設立個別指導補教事業。</p>
+
+                <h3>品牌精神：相信學習 (Believe in Learning)</h3>
+                <figure>
+                    <div class="bg-gray-200 h-64 flex items-center justify-center text-gray-500">
+                        <p>圖：翰林品牌形象圖片 - 相信學習</p>
+                    </div>
+                    <figcaption>「相信學習」不僅是一句口號，更是貫穿產品與組織文化的信念。</figcaption>
+                </figure>
+                <p>2024 年起，翰林進行了「品牌更新」，秉持著「相信學習」的核心精神，肯定每一位孩子都擁有無限的潛能。作為教育內容的生產者，我們的目標就是幫助孩子發現自己、堆疊能力、建立信心。</p>
+                <p>我們透過創作影片如《世界上唯一的問卷》、《體操女孩》，讓孩子、家長、老師重新思考教育的本質，傳達「相信孩子，成就他更好的自己」的教育理念。</p>
+
+                <h3>CIS 企業識別系統</h3>
+                <p>2024 年也是翰林的品牌更新元年，全面升級品牌識別系統：</p>
+                <ul>
+                    <li><strong>積木元素「H」：</strong>象徵學習如同層層堆疊的探索過程。</li>
+                    <li><strong>拱門設計：</strong>以「書背」的弧度作為靈感，象徵知識的入口與成長的循環。</li>
+                    <li><strong>品牌色：</strong>以海洋藍、山川藍、大氣藍三個層次，傳達海納百川、面對環境的韌性及探索未知的精神。</li>
+                </ul>
+
+                <h2>Chapter 3 ｜ 教科書製作流程</h2>
+
+                <h3>編輯的角色：在圖文之間串連教學與設計</h3>
+                <p>要有效引導落版會議與視覺溝通，編輯應具備以下基本能力：</p>
+                <ul>
+                    <li><strong>理解整體教學脈絡與企劃目的：</strong>掌握課本整體的策略方向與學科知識目的。</li>
+                    <li><strong>具備基礎落版與版面概念：</strong>了解使用者的閱讀動線、資訊層級與版面邏輯。</li>
+                    <li><strong>規劃合適的圖解活動：</strong>設計能引起動機或符合教學目標的互動任務及圖表。</li>
+                    <li><strong>精準說明插圖目的：</strong>確認插圖符合必要性、說明性、順序性與一致性。</li>
+                    <li><strong>善用參考圖示：</strong>作為溝通媒介，以類似風格或構圖說明視覺需求。</li>
+                </ul>
+
+                <h4>設計與規劃｜進行「落版會議」</h4>
+                <p><strong>落版是什麼？</strong> 正式進入內頁排版前，建議先使用手繪落版的方式進行構想，將腦中的發想在紙上大略整理。這是作者、編輯、插畫、設計之間溝通的共識與藍圖。</p>
+                
+                <p><strong>落版會議可以解決哪些問題？</strong></p>
+                <ul>
+                    <li>頁面的編排是否符合主要教學目的？</li>
+                    <li>內容安排是否符合閱讀動線？</li>
+                    <li>圖文之間的關係是否能相互對應？</li>
+                    <li>資訊圖表應該如何編排？空間是否足夠？</li>
+                </ul>
+
+                <figure>
+                    <div class="border-2 border-dashed border-gray-300 bg-white p-4">
+                        <p class="text-center font-bold mb-2">執行流程 Step 1 ~ Step 4</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+                            <div class="bg-blue-50 p-2 rounded">Step 1<br>作者文稿</div>
+                            <div class="bg-blue-50 p-2 rounded">Step 2<br>編輯整稿</div>
+                            <div class="bg-hanlin-pale border border-hanlin-blue p-2 rounded font-bold">Step 3<br>落版會議</div>
+                            <div class="bg-blue-50 p-2 rounded">Step 4<br>美編設計</div>
+                        </div>
+                    </div>
+                    <figcaption>圖 3-1：教科書製作與落版流程</figcaption>
+                </figure>
+
+                <h3>落版前的準備</h3>
+                <p>為了讓落版會議順利進行，會議前必須提前準備，避免落入無效會議：</p>
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li><strong>閱讀完需落版的文字內容：</strong>確認課文內容正確性。</li>
+                    <li><strong>預想使用情境中的閱讀動線：</strong>發想「可以怎麼讓閱讀更流暢？」並嘗試繪製自己的落版草稿。</li>
+                    <li><strong>確認圖像轉化與版面規劃：</strong>確認教學活動的可行性。</li>
+                </ol>
+                <p>若準備不足，常發生「圖表設計受限」、「內容難以視覺化」或「美編完成版面與編輯預期不一致」等問題。</p>
+
+                <h3>設計與規劃｜落版思考的三個切入點</h3>
+
+                <h4>切入點 1：從無到有 (全新教材)</h4>
+                <p>當開發全新教材時，需從零開始規劃。美編先建立基本版型 (欄位安排、字數規範)，編輯則根據版型規劃文字與圖像比例。</p>
+                <figure>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-100 h-40 flex items-center justify-center">Before：作者文稿的大略文字</div>
+                        <div class="bg-gray-100 h-40 flex items-center justify-center">After：落版會議後的完稿設計</div>
+                    </div>
+                    <figcaption>圖 3-2：從文稿到設計的轉變</figcaption>
+                </figure>
+
+                <h4>切入點 2：改造 / 編修 (改版教材)</h4>
+                <p>任務從「建立」轉為「判斷與調整」。編輯需釐清「為什麼要改？這次改版想達成什麼教學目的？」。</p>
+                <p><strong>檢核點：</strong></p>
+                <ul>
+                    <li><strong>公司策略：</strong>編修目標是否符合公司策略？</li>
+                    <li><strong>老師需求：</strong>能否提升教學流程便利性？是否為真實現場建議？</li>
+                    <li><strong>學生理解：</strong>能否讓學生更好理解？難度是否適中？</li>
+                </ul>
+                <p>常見調整包含：閱讀動線調整、圖像與文字的對應調整、圖像的轉換 (如照片轉 icon)、圖說設計邏輯一致化。</p>
+
+                <h4>切入點 3：亮點頁面 / 新企劃導入</h4>
+                <p>當需要融入新主題 (如角色引導、任務解謎) 時，落版思考須回到企劃源頭：<strong>「如何讓課本的主題性更鮮明？」</strong></p>
+                <ul>
+                    <li><strong>認知面：</strong>幫助理解。透過排版區分層級，透過圖像降低閱讀負擔，透過互動提高覺察。</li>
+                    <li><strong>情意面：</strong>啟發動機。結合學生喜愛的視覺風格，加入遊戲、創作、任務，創造沈浸式體驗。</li>
+                </ul>
+
+                <h3>從視覺語言連結學習動機</h3>
+                <p>「設計」不只是美觀，更是透過視覺引起學習動機。主題企劃與風格定調必須在企劃之初確立。</p>
+                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200 my-6">
+                    <p class="font-bold mb-2">我們可以試著這樣發想：</p>
+                    <p class="text-lg">「給 <span class="border-b-2 border-gray-400 px-2">學習者描述</span> ，一本像 <span class="border-b-2 border-gray-400 px-2">體驗主題敘述</span> 的 <span class="border-b-2 border-gray-400 px-2">教材內容</span>。」</p>
+                    <p class="mt-4 text-sm text-gray-600">範例：給國小五年級學生，一本像偵探解謎的數學課本。<br>範例：給國中七年級學生，一本像運動漫畫的體育課本。</p>
+                </div>
+
+                <h4>插畫的溝通與視覺</h4>
+                <p>為了避免合作後反覆修改，翰林內部對插畫需求的對焦越詳細越好。閱讀插畫家作品集時，可從以下面向觀察：</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <ul class="bg-white p-4 rounded shadow-sm">
+                        <li><strong>色彩：</strong>色調是否符合年齡層？能否營造情緒？</li>
+                        <li><strong>構圖：</strong>具象或抽象？主題比例是否清晰？</li>
+                        <li><strong>角色：</strong>擅長人物或動物？設定是否呼應主題？</li>
+                        <li><strong>表情：</strong>需要自然還是多樣變化？</li>
+                    </ul>
+                    <ul class="bg-white p-4 rounded shadow-sm">
+                        <li><strong>空間：</strong>是否擅長不同視角 (俯視/仰視)？</li>
+                        <li><strong>動靜：</strong>動作是否流暢、有節奏感？</li>
+                        <li><strong>造型：</strong>服裝配件是否貼近教材內容？</li>
+                        <li><strong>材質：</strong>筆觸紋理是否清晰？</li>
+                    </ul>
+                </div>
+                <p class="mt-6">提案時應清楚傳達挑選意圖，並提供具體的關鍵字、參考圖庫或相關教材書籍作為參考標的，確認插畫家的可執行性，才能讓合作順利進行。</p>
+
+            </div>
+
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

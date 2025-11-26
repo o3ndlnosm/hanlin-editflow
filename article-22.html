@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>說明會教戰手冊 | 翰林北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 1. 引入配色設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        .prose ol {
+            @apply list-decimal pl-6 mb-8;
+        }
+        .prose ol li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md border border-gray-200;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 mt-3 italic;
+        }
+
+        /* 表格樣式 */
+        .table-container {
+            @apply overflow-x-auto mb-8 rounded-lg border border-gray-200 shadow-sm;
+        }
+        .prose table {
+            @apply min-w-full divide-y divide-gray-300;
+        }
+        .prose thead {
+            @apply bg-blue-50;
+        }
+        .prose th {
+            @apply px-3 py-3.5 text-left text-sm font-bold text-hanlin-blue whitespace-nowrap;
+        }
+        .prose td {
+            @apply px-3 py-4 text-sm text-gray-600 border-t border-gray-100 align-top;
+        }
+        .prose tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- 麵包屑導航 -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">第二十二單元</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <!-- 主標題 -->
+                <h1>臺北研發處編輯手冊 22：說明會教戰手冊</h1>
+                
+                <!-- 引言區塊 -->
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-0 font-medium !text-hanlin-blue">說明會是直接面對第一線教師的關鍵戰場。本手冊提供新進編輯從「行前準備」、「現場應對」到「會後跟進」的完整指南，協助您自信站上講台，展現教材優勢。</p>
+                </div>
+
+                <!-- ==================== 內容開始 ==================== -->
+                <h2>一、說明會是什麼？</h2>
+                <p>說明會是針對學校端正在選書的使用教師所舉辦的重要活動，主要目標為：</p>
+                <ul>
+                    <li><strong>傳遞理念：</strong>讓老師了解我們教材版本的核心設計理念與特色。</li>
+                    <li><strong>展示資源：</strong>熟悉可搭配使用的教學配套資源（如習作、電子書、教案等）。</li>
+                    <li><strong>建立優勢：</strong>理解我們版本相較於其他版本的優勢與便利性。</li>
+                    <li><strong>爭取支持：</strong>最終目標是讓老師支持並選用本版本教材。</li>
+                </ul>
+
+                <h2>二、說明會形式</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="w-1/4">項目</th>
+                                <th class="w-3/4">說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">對象</td>
+                                <td>各校教師，通常是有教材選用權或參與選書的關鍵老師。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">形式</td>
+                                <td>多為<strong>實體一對多講述</strong>，偶有線上或分組互動的形式。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">長度</td>
+                                <td>通常約 <strong>20 分鐘</strong>，但也可能短至 10 分鐘或長達 60 分鐘。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>三、說明會前的準備</h2>
+                <p>成功的說明會建立在周全的準備上。請依循<strong>「人、事、時」</strong>三個維度進行檢核：</p>
+
+                <h3>👤 【人】人員關係與溝通</h3>
+                <p>說明會由「業務上單」後轉交領域主編指派。收到單子（如下圖範例）後，編輯需主動聯繫：</p>
+                
+                <figure>
+                    <img src="./image/article-22-request-form.jpg" alt="說明會申請單範例" onerror="this.onerror=null;this.src='https://placehold.co/800x200/EBF4FF/005CA1?text=%E8%AA%AA%E6%98%8E%E6%9C%83%E7%94%B3%E8%AB%8B%E5%96%AE%E7%AF%84%E4%BE%8B';">
+                    <figcaption>圖 22-1：業務上單範例，包含時間、地點、人數等關鍵資訊。</figcaption>
+                </figure>
+
+                <ul class="list-disc pl-5">
+                    <li><strong>確認細節：</strong>聯絡業務確認人數、重點需求、過往意見（如改版、數位工具）。</li>
+                    <li><strong>分配時間：</strong>若為分科領域（如綜合活動），需確認各科時間分配。</li>
+                    <li><strong>特殊狀況：</strong>是否有「魔王級」老師或同業作者在場。</li>
+                    <li><strong>場地確認：</strong>確認設備（筆電、投影機、轉接頭）與碰面地點。</li>
+                </ul>
+
+                <h3>🗂 【事】工作項目與重點準備</h3>
+                <ul class="list-disc pl-5">
+                    <li><strong>客製化簡報：</strong>依據該校需求（如重視素養、想看習作）調整公版簡報。</li>
+                    <li><strong>教材樣書：</strong>準備簡介本、課本、習作等。（<strong>注意：</strong>近年文宣品規範較嚴，需先確認能否 DEMO）。</li>
+                    <li><strong>備份檔案：</strong>簡報上傳雲端，並同步存於<strong>兩個以上</strong>隨身硬碟。</li>
+                </ul>
+
+                <h3>🕒 【時】時間安排與節奏</h3>
+                <ul class="list-disc pl-5">
+                    <li><strong>前 2-3 天：</strong>完成資料彙整，不確定處請主管審閱。</li>
+                    <li><strong>前 1 天：</strong>完成檔案並提供給業務確認。</li>
+                    <li><strong>當天：</strong>提前 <strong>10-15 分鐘</strong>到場準備設備。（<strong>注意：</strong>資料請直接在隨身碟開啟，勿存入學校公用電腦）。</li>
+                </ul>
+
+                <h2>四、說明會中注意事項</h2>
+                <p>現場即戰場，從穿著到應對都是專業形象的展現。</p>
+
+                <h4>1. 穿著建議</h4>
+                <p>風格以<strong>「乾淨、正式、專業」</strong>為主。建議穿著有領上衣（襯衫、Polo衫），避免短褲、拖鞋等過度休閒裝扮。</p>
+
+                <h4>2. 態度與開場</h4>
+                <ul>
+                    <li><strong>自信開場：</strong>「大家好，我是翰林出版的○○科編輯...」語氣要堅定。</li>
+                    <li><strong>眼神交流：</strong>避免只盯著螢幕念稿，多觀察台下反應。</li>
+                    <li><strong>善用故事：</strong>適時加入編輯小故事或案例，增強共鳴。</li>
+                </ul>
+
+                <h4>3. 面對冷場與突發狀況</h4>
+                <p>若老師反應冷淡（滑手機、改作業），請勿焦慮，維持自信節奏即可。若遇突發狀況，請參考下表：</p>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="w-1/3">突發情況</th>
+                                <th class="w-2/3">應對建議</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">設備故障無法播放</td>
+                                <td>直接改以<strong>簡介本口頭講解</strong>，重點放在教材特色與資源。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">時間不夠</td>
+                                <td>請業務在倒數 5 分鐘/3 分鐘提示。若來不及，優先留下<strong>「最強亮點」</strong>與<strong>「教學資源支援」</strong>兩重點。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">被問到未準備的問題</td>
+                                <td>使用公版回覆：「謝謝老師建議，這部分我們會後請業務提供補充資訊給您。」</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>五、說明會結束後可以做什麼？</h2>
+                <p>說明會結束不只是「講完就走」，後續行動能延續影響力：</p>
+                <ul class="list-disc pl-5">
+                    <li><strong>提供承諾資料：</strong>若現場有答應提供補充資料，應盡快整理回傳給業務。</li>
+                    <li><strong>確認後續動作：</strong>與業務確認是否需要回訪補強，或是進行固版本/搶版本的下一步策略。</li>
+                </ul>
+
+            </div>
+
+            <!-- 返回連結 -->
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. 頁腳 (Footer) -->
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    <!-- 6. 腳本 -->
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>

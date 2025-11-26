@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>內容授權（文、圖、照片） | 翰林北研編輯手冊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 1. 引入配色設定 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hanlin: {
+                            blue: '#005CA1',   // 指定深藍
+                            gold: '#BDB07B',   // 指定金色
+                            sky: '#54C3F1',    // 指定天藍
+                            pale: '#EBF4FF',   // 指定淺藍底色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        
+        /* --- 文章內頁專屬排版樣式 --- */
+
+        /* 頁面主標題 (H1) */
+        .prose h1 {
+            @apply text-3xl sm:text-4xl font-extrabold text-gray-900 mt-0 mb-8 leading-tight;
+        }
+        
+        /* 章節大標題 (H2) */
+        .prose h2 {
+            @apply text-2xl sm:text-3xl font-bold text-hanlin-blue border-b-2 border-hanlin-sky pb-3 mt-16 mb-8;
+        }
+        
+        /* 次要標題 (H3) */
+        .prose h3 {
+            @apply text-xl sm:text-2xl font-bold text-gray-800 mt-12 mb-6;
+        }
+        
+        /* 段落小標題 (H4) */
+        .prose h4 {
+            @apply text-lg font-bold text-gray-900 mt-10 mb-4 border-l-4 border-hanlin-blue pl-4 py-2 bg-hanlin-pale rounded-r-lg;
+        }
+        
+        /* 列表樣式 */
+        .prose ul {
+            @apply list-disc pl-6 mb-8;
+        }
+        .prose ul li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        .prose ol {
+            @apply list-decimal pl-6 mb-8;
+        }
+        .prose ol li {
+            @apply marker:text-hanlin-blue mb-2 text-gray-700;
+        }
+        
+        /* 內文段落樣式 */
+        .prose p {
+            @apply text-gray-700 leading-8 mb-8 text-justify;
+        }
+        
+        /* 粗體字樣式 */
+        .prose strong {
+            @apply font-bold text-hanlin-blue;
+        }
+
+        /* 連結樣式 */
+        .prose a {
+            @apply text-hanlin-blue hover:text-hanlin-sky hover:underline transition-colors duration-200 break-all;
+        }
+
+        /* 圖片容器樣式 */
+        .prose figure {
+            @apply my-10;
+        }
+        .prose img {
+            @apply w-full rounded-lg shadow-md border border-gray-200;
+        }
+        .prose figcaption {
+            @apply text-center text-sm text-gray-500 mt-3 italic;
+        }
+
+        /* 表格樣式 */
+        .table-container {
+            @apply overflow-x-auto mb-8 rounded-lg border border-gray-200 shadow-sm;
+        }
+        .prose table {
+            @apply min-w-full divide-y divide-gray-300;
+        }
+        .prose thead {
+            @apply bg-blue-50;
+        }
+        .prose th {
+            @apply px-3 py-3.5 text-left text-sm font-bold text-hanlin-blue whitespace-nowrap;
+        }
+        .prose td {
+            @apply px-3 py-4 text-sm text-gray-600 border-t border-gray-100 align-top;
+        }
+        .prose tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+
+        /* Logo 高度 */
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        /* 側邊欄連結樣式 */
+        .sitemap-link {
+            @apply block p-4 rounded-lg hover:bg-gray-50 transition duration-200 border border-transparent hover:border-hanlin-blue;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="./index.html" class="flex items-center gap-3">
+                    <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                    <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                </a>
+            </div>
+
+<nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm">
+                        首頁
+                    </a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition duration-150 ease-in-out font-medium px-4 py-2 rounded-lg shadow-sm focus:outline-none">
+                        手冊目錄
+                    </button>
+                </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue focus:outline-none p-2 rounded-md transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+        <a href="./index.html" class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">首頁</a>
+        <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-hanlin-blue border-t">手冊目錄</button>
+    </div>
+</header>
+
+<div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+<div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-blue-50">
+        <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+        <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-6 space-y-4">
+        <div class="mb-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">關於翰林</div>
+        <div id="sitemap-list" class="space-y-4"></div>
+    </div>
+    <div class="p-4 bg-gray-50 text-center text-xs text-gray-400 border-t border-gray-100">
+        &copy; 2024 翰林北研編輯手冊
+    </div>
+</div>
+
+
+<main class="py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- 麵包屑導航 -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="./index.html" class="inline-flex items-center hover:text-hanlin-blue">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                            首頁
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-gray-700 md:ml-2">編務手冊</span>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="ml-1 text-hanlin-blue md:ml-2 font-medium">第十單元</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl prose max-w-none border-t-4 border-hanlin-gold">
+                
+                <!-- 主標題 -->
+                <h1>臺北研發處編輯手冊 10：內容授權（文、圖、照片）</h1>
+                
+                <!-- 引言區塊 -->
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="mb-0 font-medium !text-hanlin-blue">本單元詳述編輯在處理圖片、文章、照片等內容授權時的完整流程，包含搜圖資源、版權洽談、合約簽訂到費用請款的實務操作指南。</p>
+                </div>
+
+                <!-- ==================== 內容開始 ==================== -->
+                <h2>一、搜圖─圖庫資源</h2>
+                <p>編輯在尋找配圖時，應優先使用公司簽約的合作圖庫，其次考量免費資源或外部洽談。</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+                        <h4 class="text-hanlin-blue border-b-2 border-hanlin-sky pb-2 mb-3">💰 合作圖庫 (收費)</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>TPG (達志影像)</strong>：窗口莊小姐 (Tina)，需回傳報價單。</li>
+                            <li><strong>alamy / shutterstock / Dreamstime</strong>：透過合作單位取圖。</li>
+                            <li><strong>UDN (聯合知識庫)</strong>：新聞照片資源。</li>
+                            <li><strong>Adobe Stock</strong>：請領域主編或組長協助購買。</li>
+                            <li><strong>萬兆豐</strong>：窗口李睿迪。</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 shadow-sm">
+                        <h4 class="text-gray-700 border-b-2 border-gray-300 pb-2 mb-3">🆓 免費資源</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>翰林圖文庫</strong>：公司內網資源 (hlart1.hanlin.com.tw)。</li>
+                            <li><strong>Pixabay / Pexels / Unsplash</strong>：免費商用圖庫。</li>
+                            <li><strong>Wikimedia Commons</strong>：維基共享資源。</li>
+                            <li><strong>Google 圖片搜尋</strong>：務必使用「工具」➜「使用權」篩選「創用 CC 授權」或「商業授權」。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>購圖流程</h3>
+                <ol class="list-decimal pl-5 mb-6">
+                    <li><strong>選圖：</strong>確認圖片編號與來源。</li>
+                    <li><strong>報價：</strong>取得報價單。</li>
+                    <li><strong>簽核：</strong>報價單經<strong>主編簽名</strong>。</li>
+                    <li><strong>送件：</strong>交給管理室宜君 (#2516)。</li>
+                    <li><strong>回傳：</strong>達志報價單簽畢後需回傳給對方窗口留存。</li>
+                </ol>
+
+                <h2>二、圖文授權─外部版權</h2>
+                <p>若圖庫無適用資源，需向外部單位（博物館、出版社、攝影師等）洽談授權。</p>
+
+                <h3>洽談步驟</h3>
+                <ol class="list-decimal pl-5 mb-6">
+                    <li><strong>確認需求：</strong>與作者確認需要的圖照或文章，並先挑選好目標。</li>
+                    <li><strong>聯繫版權方：</strong>
+                        <ul class="list-[circle] pl-5 mt-1 text-gray-600">
+                            <li>盡量使用<strong>領域公用信箱</strong>發正式信件。</li>
+                            <li>若信件未果，可嘗試電話或社群媒體 (FB, IG) 聯繫。</li>
+                        </ul>
+                    </li>
+                    <li><strong>談報價與範圍：</strong>確認授權期限、範圍與費用（參考公司制式費用或對方公定價）。</li>
+                </ol>
+
+                <h3>版權標示方式</h3>
+                <p>需依據各領域統一格式或版權方要求，在圖說、版權頁或附錄頁面標示來源。例如：</p>
+                <div class="bg-gray-100 p-4 rounded text-sm text-gray-700 font-mono mb-6">
+                    圖1 媽祖繞境／達志影像提供<br>
+                    圖2 八家將／星光娛樂有限公司提供<br>
+                    圖3 楊喚手稿／國立臺灣文學館提供
+                </div>
+
+                <h2>三、肖像權</h2>
+                <p>當涉及以下情況時，必須取得肖像權授權：</p>
+                <ul class="list-disc pl-5 mb-6">
+                    <li>拍攝、繪畫、雕塑他人肖像。</li>
+                    <li>將他人肖像在電視、網路、新聞雜誌公開傳播。</li>
+                    <li>以營利目的使用他人肖像（商業化）。</li>
+                </ul>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-8">
+                    <p class="font-bold text-yellow-800 mb-1">⚠️ 注意事項</p>
+                    <p class="text-yellow-700 text-sm mb-0">需請對方簽署<strong>【肖像權同意書】</strong>，並清楚標註標的物名稱、使用方式、年限、地區、版次與費用。</p>
+                </div>
+
+                <h2>四、合約製作流程</h2>
+
+                <h3>1. 合約細節確認</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>項目</th>
+                                <th>公司制式標準</th>
+                                <th>注意事項</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">授權年限</td>
+                                <td>十二年國民基本教育課程綱要終止之日</td>
+                                <td>若有異動，建議以 3 年修訂年限為基礎。</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">授權費用</td>
+                                <td>
+                                    語文：$1,250 / 千字<br>
+                                    圖片：$625 / 張<br>
+                                    音樂：$2,500 / 首
+                                </td>
+                                <td>
+                                    金額超過 5,000 元需報備主編/組長。<br>
+                                    個人超過 20,000 元需代扣 10% 所得稅。
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">合約條文</td>
+                                <td>公司制式合約書</td>
+                                <td>若有任何修改（除費用年限外），需經主編確認；若使用對方合約需請示法務。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. 製作與用印</h3>
+                <ol class="list-decimal pl-5 mb-6">
+                    <li><strong>流水號申請：</strong>寄信給台北研發處李季雲，主旨「【領域】合約書編號申請事宜」。</li>
+                    <li><strong>合約列印：</strong>若非制式合約或有條文修改，需使用<strong>有色封皮</strong>區分。</li>
+                    <li><strong>用印申請：</strong>
+                        <ul class="list-[circle] pl-5 mt-1">
+                            <li>每週二 15:00 前給季雲，週五下午可取件。</li>
+                            <li>緊急件可自行跑流程（7樓智偉經理小章 ➔ 8樓哲平主任大章）。</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>3. 寄件與歸檔</h3>
+                <ul>
+                    <li><strong>寄件：</strong>一式兩份寄給對方，附上回郵信封與提醒事項（請對方寄回一份、附上帳戶影本）。</li>
+                    <li><strong>歸檔：</strong>收到對方寄回的合約後，掃描正本（含附件）存入公司雲端 `\\Vstp1\合約上傳區`，檔名為合約編號。</li>
+                </ul>
+
+                <h2>五、費用請款原則</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h4 class="font-bold text-hanlin-blue mb-3">事前請款 (暫付款)</h4>
+                        <p class="text-sm text-gray-600 mb-2">適用於版權方要求「先匯款才給圖/授權」的情況。</p>
+                        <ol class="list-decimal pl-5 text-sm">
+                            <li>填寫「暫付款憑單」。</li>
+                            <li>會計約兩週入帳。</li>
+                            <li>後續仍需補齊發票/收據與合約影本進行核銷。</li>
+                        </ol>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h4 class="font-bold text-hanlin-blue mb-3">事後請款</h4>
+                        <p class="text-sm text-gray-600 mb-2">一般流程，取得授權合約與單據後請款。</p>
+                        <ol class="list-decimal pl-5 text-sm">
+                            <li>填寫「支付憑證」。</li>
+                            <li>附上收據/發票、存摺影本、合約書影本、身分證資料(個人)。</li>
+                            <li>交給宜君處理。</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h2>六、著作人協尋流程</h2>
+                <p>若盡力尋找仍無法聯繫到著作權人，需進行「協尋」程序以展現盡職調查：</p>
+                <ol class="list-decimal pl-5 mb-6">
+                    <li>進入後臺 (img.hle.com.tw) 登入帳號。</li>
+                    <li>新增文章，標題格式：<code>學制_科目_著作物(公告日期)</code>。</li>
+                    <li>內文填寫：著作物名稱、著作人、資料出處、聯絡人 (翰林信箱)。</li>
+                    <li>勾選分類：「尋找著作權人」及對應學制科目。</li>
+                    <li>發布後，次日午後可於官網「尋找著作權人」專區看到資訊。</li>
+                </ol>
+
+            </div>
+
+            <!-- 返回連結 -->
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. 頁腳 (Footer) -->
+    
+
+    <footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+        <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+    </div>
+</footer>
+
+
+
+
+    <!-- 6. 腳本 -->
+    
+
+    <script>window.difyChatbotConfig = {token: 'nUh1ogJmcuvo1bsV',baseUrl: 'http://dify.hle.com.tw',systemVariables: {},}</script>
+    <script src="http://dify.hle.com.tw/embed.min.js" id="nUh1ogJmcuvo1bsV" defer></script>
+    <style>#dify-chatbot-bubble-button {background-color: #1C64F2 !important;position: fixed !important;bottom: 2rem !important;right: 2rem !important;z-index: 9999 !important;}#dify-chatbot-bubble-window {width: 24rem !important;height: 40rem !important;position: fixed !important;bottom: 5rem !important;right: 2rem !important;z-index: 9999 !important;}</style>
+
+
+    <script src="./main.js"></script>
+
+</body>
+</html>
