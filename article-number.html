@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章標題 | 翰林北研編輯手冊</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="./index.html" class="flex items-center gap-3">
+                        <img src="./image/logo.png" alt="翰林 Logo" class="logo-img">
+                        <span class="text-3xl font-bold text-hanlin-blue tracking-wider">北研編輯手冊</span>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-4 items-center">
+                    <a href="./index.html" class="bg-hanlin-gold text-white hover:opacity-90 transition px-4 py-2 rounded-lg font-medium">首頁</a>
+                    <button onclick="openSitemap()" class="bg-hanlin-sky text-white hover:opacity-90 transition px-4 py-2 rounded-lg font-medium">手冊目錄</button>
+                </nav>
+
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-hanlin-blue p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+            <a href="./index.html" class="block px-4 py-3 text-sm border-t hover:bg-blue-50">首頁</a>
+            <button onclick="openSitemap()" class="block w-full text-left px-4 py-3 text-sm border-t hover:bg-blue-50">手冊目錄</button>
+        </div>
+    </header>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+                
+                <h1>請在此輸入主標題</h1>
+
+                <div class="text-lg text-hanlin-blue bg-hanlin-pale border-l-4 border-hanlin-blue p-6 rounded-r-lg mb-10">
+                    <p class="font-medium !text-hanlin-blue !mb-2">本章重點</p>
+                    <ul class="!mb-0">
+                        <li><strong>第一部分：</strong>XXXXXXXXXXX。</li>
+                        <li><strong>第二部分：</strong>XXXXXXXXXXXXX。</li>
+                    </ul>
+                </div>
+
+                <h2>這裡是章節大標題 (H2)</h2>
+                <p>這裡是內文段落，文字會自動左右對齊，行距也都設定好了。這裡是內文段落，文字會自動左右對齊，行距也都設定好了。</p>
+
+                <h3>這裡是次要標題 (H3)</h3>
+                <p>更多內容...</p>
+
+                <figure>
+                    <img src="./image/sample.jpg" alt="圖片說明">
+                    <figcaption>這裡是圖片說明文字</figcaption>
+                </figure>
+
+                </div>
+
+            <div class="mt-10 text-center">
+                <a href="./index.html" class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path></svg>
+                    回到所有文件列表
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2024 翰林北研編輯手冊. 版權所有.</p>
+            <p class="mt-2 text-gray-400">內部培訓與參考文件。</p>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+</html>

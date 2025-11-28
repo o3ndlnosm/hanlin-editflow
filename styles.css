@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+/* ================= 基礎設定 ================= */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f7f9fb;
+    color: #1f2937;
+    /* gray-800 */
 }
 
+/* ================= 元件：文章卡片 (首頁) ================= */
 .article-card {
     border-radius: 0.75rem;
     overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -22,12 +26,13 @@ body {
     border-top-right-radius: 0.75rem;
 }
 
+/* ================= 元件：側邊欄連結 ================= */
 .sitemap-link {
     display: block;
     padding: 1rem;
     border-radius: 0.5rem;
     border: 1px solid transparent;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .sitemap-link:hover {
@@ -35,6 +40,7 @@ body {
     border-color: #005CA1;
 }
 
+/* ================= 元件：Logo 與 背景 ================= */
 .logo-img {
     height: 40px;
     width: auto;
@@ -42,7 +48,256 @@ body {
 
 .hero-section {
     background-image: url('image/hero-bg.jpg');
+    /* 確保圖片路徑正確 */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* ================= 文章內頁排版 (Prose) ================= */
+/* 這裡取代了原本 HTML head 裡那一長串 style */
+
+.article-content h1 {
+    font-size: 2.25rem;
+    /* text-4xl */
+    font-weight: 800;
+    color: #111827;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    line-height: 1.25;
+}
+
+.article-content h2 {
+    font-size: 1.875rem;
+    /* text-3xl */
+    font-weight: 700;
+    color: #005CA1;
+    /* hanlin-blue */
+    border-bottom: 2px solid #54C3F1;
+    /* hanlin-sky */
+    padding-bottom: 0.75rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.article-content h3 {
+    font-size: 1.5rem;
+    /* text-2xl */
+    font-weight: 700;
+    color: #1f2937;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-content h4 {
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #005CA1;
+    /* hanlin-blue */
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #EBF4FF;
+    /* hanlin-pale */
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.article-content p {
+    color: #374151;
+    line-height: 2;
+    /* leading-8 */
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.article-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+    color: #374151;
+}
+
+.article-content li::marker {
+    color: #005CA1;
+}
+
+.article-content strong {
+    font-weight: 700;
+    color: #005CA1;
+}
+
+.article-content a {
+    color: #005CA1;
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.article-content a:hover {
+    color: #54C3F1;
+    text-decoration: underline;
+}
+
+.article-content img {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-content figcaption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-style: italic;
+    margin-bottom: 2.5rem;
+}
+
+/* ================= 聊天機器人樣式 ================= */
+#custom-chatbot-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+#chatbot-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #005CA1;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 92, 161, 0.4);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chatbot-toggle-btn:hover {
+    transform: scale(1.05);
+    background-color: #004a80;
+}
+
+#chatbot-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 340px;
+    height: 520px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#chatbot-window.hidden {
+    display: none;
+}
+
+.chat-header {
+    background-color: #005CA1;
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+#close-chat-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: #f7f9fb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.message {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: white;
+    color: #333;
+    border: 1px solid #e5e7eb;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.user-message {
+    background-color: #005CA1;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 12px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 8px;
+    background: white;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+#chat-input:focus {
+    border-color: #005CA1;
+}
+
+#send-btn {
+    background-color: #005CA1;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-btn:disabled {
+    background-color: #ccc;
 }
