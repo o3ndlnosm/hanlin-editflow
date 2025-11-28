@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設計風格與聚焦 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>設計風格與聚焦</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+                
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>設計主題與風格定調</h2>
+                <p>整體視覺風格，從企劃開始</p>
+                <p>「設計」不只是美觀，更透過視覺的方式引起學生的學習動機。視覺的規劃不僅是美術編輯的責任，更是需要與企劃、文編合作，共同了解教學目標，設計良好的學習體驗。</p>
+                <h2>主題發想與企劃</h2>
+                <p>主題企劃與風格定調就像是一本教科書的內涵，必須在企劃之初就完全確立，否則後續的企劃與設計容易過於發散。</p>
+                <p>我們可以從這些角度來構思：</p>
+                <ul>
+                    <li>確定每一本教材的使用者輪廓</li>
+                    <li>確定教學內容的精神與特性</li>
+                    <li>尋找類似的參考標的、參考圖</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-4-1.jpg" alt="圖 4-1">
+                    <figcaption>圖 4-1：(請在此填寫圖說)</figcaption>
+                </figure>
+                <!-- 圖片 -->
+                <figure>
+                    <img src="./image/article-4-2.jpg" alt="圖 4-2">
+                    <figcaption>圖 4-2：(請在此填寫圖說)</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-4-3.jpg" alt="圖 4-3">
+                    <figcaption>圖 4-3：(請在此填寫圖說)</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-4-4.jpg" alt="圖 4-4">
+                    <figcaption>圖 4-4：(請在此填寫圖說)</figcaption>
+                </figure>
+                <h2>設計與插畫風格聚焦</h2>
+                <p>插畫的視覺包涵構圖</p>
+                <p>每一位設計師和插畫家擅長的方向都不一樣，為了避免合作後無限次修改或達不到效果的情況，翰林內部對焦越詳細、仔細評估合作人選的作品集，才能讓合作達成效益。</p>
+                <ol>
+                    <li>如何判斷設計師 / 插畫家是否適合？</li>
+                </ol>
+                <ol>
+                    <li>釐清目標與動機</li>
+                </ol>
+                <ul>
+                    <li>為什麼要製作插畫？ 預期的效果如何？</li>
+                    <li>構圖需要包含什麼教學重點？ 提供教材關鍵字或延伸想法</li>
+                    <li>有想要合作的插畫家人選嗎？</li>
+                    <li>確認稿件的內部決策流程（需要過內部幾個長官與流程，每一次的稿件需要繪製到什麼程度）</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-4-5.jpg" alt="圖 4-5">
+                    <figcaption>圖 4-5：(請在此填寫圖說)</figcaption>
+                </figure>
+                <p>確認內部具體方向後，比較好尋找適合的設計師或插畫家。若喜歡的插畫家無法配合或沒被選上，也能因為目標清楚，快速尋找到下一位插畫家。</p>
+                <p>不論什麼樣的選擇和提案都有一個共通點：「清楚傳達挑選意圖」，切勿為了提案而提案。有共同的理念與目標，才能讓合作順利進行。</p>
+                <ol>
+                    <li>如何判斷設計師 / 插畫家是否適合？</li>
+                </ol>
+                <figure>
+                    <img src="./image/article-4-6.jpg" alt="圖 4-6">
+                    <figcaption>圖 4-6：(請在此填寫圖說)</figcaption>
+                </figure>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

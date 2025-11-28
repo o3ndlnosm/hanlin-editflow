@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>開會流程與溝通技巧 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>開會流程與溝通技巧</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+                
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>會議溝通目的</h2>
+                <p>在翰林，我們期待每一位成員的聲音都能夠被聽見。會議在工作流程中是必要的溝通與交流，我們透過會議來確立共同目標，共享工作進度及團隊價值，並讓同仁們的工作腳步一致。期待在翰林的每一場會議，都能夠有效的促進大家的資訊交流，帶動決策的執行。不要為了開會而開會，而是透過會議幫助每一位成員更有效率地完成手上的工作。
+                </p>
+
+                <h2>常見的會議類型</h2>
+                <ol>
+                    <li>
+                        <p>進度會議：在日常工作中，為了避免團隊成員在各自專業與資訊上的落差，我們會定期召開進度例會，追蹤進度以及對焦接下來的待辦事項。</p>
+                    </li>
+                    <li>
+                        <p>創意激盪會議：俗話說：「三個臭皮匠，勝過一個諸葛亮」，集思廣益可以發揮極大的力量。因此，我們也會希望各位能夠透過創意激盪會議中的「頭腦風暴 Brain
+                            Storming」，共同發想出有趣的創意提案。</p>
+                    </li>
+                    <li>
+                        <p>問題解決會議：如果遇到棘手的難題，我們也希望透過會議深入釐清問題，並且尋找解決方案。希望會議發起者能在會前提供相關的資料，讓與會者都能理解與聚焦問題，並在會議上充分參與討論，共同提出可行的解決方案。
+                        </p>
+                    </li>
+                    <li>
+                        <p>決策型會議：通常經過一連串的會議討論後，應該在適當的時程中，舉行一個決策會議，才能讓專案順利進行。在決策型的會議中，通常會拍板定案重要的進度與決策。因此希望會議紀錄能夠詳細地記錄決策的原因與結果，讓各部門能夠依循決策，也能避免後續推翻決策，當要推翻決策時，也可以回頭看看當時決策的目的為何。
+                        </p>
+                    </li>
+                </ol>
+
+                <h2>開會要準備什麼？</h2>
+                <h3>會議前</h3>
+                <ul>
+                    <li>
+                        <p>會議的目的是什麼？</p>
+                    </li>
+                    <li>
+                        <p>預期達成的會議結果？</p>
+                    </li>
+                    <li>
+                        <p>是否有安排會議時間 / 地點？</p>
+                    </li>
+                    <li>
+                        <p>確認與會者的職位、人數</p>
+                    </li>
+                    <li>
+                        <p>準備會議大綱、參考資料並通知與會</p>
+                    </li>
+                    <li>
+                        <p>先預想如何進行會議、討論順序、如何討論</p>
+                    </li>
+                </ul>
+
+                <h3>會議中</h3>
+                <ul>
+                    <li>
+                        <p>會議簡報 / 資料印製等準備</p>
+                    </li>
+                    <li>
+                        <p>確認擔任角色：會議主持 / 記錄 / 參與者</p>
+                    </li>
+                    <li>
+                        <p>決定事項應有明確後續行動，在會議中明訂該由「誰」負責、做什麼、何時完成</p>
+                    </li>
+                    <li>
+                        <p>若是外部合作會議，可提供外部單位範本參考
+                            (references)，有助於明確對焦目標</p>
+                    </li>
+                </ul>
+
+                <h3>會議後</h3>
+                <ul>
+                    <li>
+                        <p>會議紀錄發送</p>
+                    </li>
+                    <li>
+                        <p>盤點決議 / 尚未決議事項</p>
+                    </li>
+                    <li>
+                        <p>追蹤後續進度</p>
+                    </li>
+                    <li>
+                        <p>下一次會議進度與日期</p>
+                    </li>
+                </ul>
+
+                <p>為了提升會議效率，避免會議流於無效或偏離主題，應在會前由發起者擬定清楚的議程，明確設定討論目標，並邀請與會者針對議題提出具體想法。常見的低效會議問題包括：缺乏明確議程與目標、情緒化或過度主觀的發言、責備他人而非尋求解方。透過充分準備與理性溝通，可有效降低溝通成本，讓每場會議更具成效。
+                </p>
+
+                <h2>會議溝通｜會議中的管理技巧</h2>
+                <h3>會議中我可以做什麼事？</h3>
+                <ol>
+                    <li>
+                        <p>前情提要目前的進度與狀況：讓與會者站在同一個基準點上，避免資訊落差造成溝通效率低</p>
+                        <ul>
+                            <li>
+                                <p>簡單回顧已完成的進度決上次結論</p>
+                            </li>
+                            <li>
+                                <p>說明為什麼需要開這次會議的背景</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>現在遇到的困難與需要決策的事情：聚焦問題本質，提高決策品質與效率</p>
+                        <ul>
+                            <li>
+                                <p>明確列出目前的困難或問題來源</p>
+                            </li>
+                            <li>
+                                <p>若已有想好解法或有其他選項，可以在會議上先提出內容參考</p>
+                            </li>
+                            <li>
+                                <p>對於需要決策的內容，可說明一定需要主管決策的原因與不決策的嚴重性（例如：時程、其他工作事項影響等）</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>預留足夠時間討論重要事項：提升效率，確保所有議題有結果或後續動作</p>
+                        <ul>
+                            <li>
+                                <p>依議題重要性分級排序，避免會議時間不足</p>
+                            </li>
+                            <li>
+                                <p>優先討論本次會議需決策事項，再說明其他次要議題與狀況更新</p>
+                            </li>
+                            <li>
+                                <p>適時控管討論時間，避免議題發散</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <p>請避免以下事項：</p>
+                <ol>
+                    <li>
+                        <p>避免會議上不提出意見，會後私下討論</p>
+                        <ul>
+                            <li>
+                                <p>請於會議上充分溝通與表達意見</p>
+                            </li>
+                            <li>
+                                <p>若會後有其他想法，請盡量避免推翻會議結論</p>
+                            </li>
+                            <li>
+                                <p>若需重啟討論，請確保團隊成員都能同步知悉</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>避免花太多時間討論細節或延伸問題</p>
+                        <ul>
+                            <li>
+                                <p>會議前，若知道無法在會議上討論細節，應預先列好討論項目，或請團隊成員事先提供方向與建議，會議上只針對困難處進行決策</p>
+                            </li>
+                            <li>
+                                <p>需要額外發想或延伸討論時，可另開小組討論或會後找夥伴討論，並更新結論給所有團隊成員</p>
+                            </li>
+                            <li>
+                                <p>建議隨時回顧會議或專案目標，避免議題失焦</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>避免只提出問題，不提供建議</p>
+                        <ul>
+                            <li>
+                                <p>會議上若只提出問題而不解決，容易產生負面氛圍與問題堆積</p>
+                            </li>
+                            <li>
+                                <p>鼓勵每個團隊成員皆可針對問題提出回應與建議</p>
+                            </li>
+                            <li>
+                                <p>點出問題時，請先思考與提出可行的方案或期待</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

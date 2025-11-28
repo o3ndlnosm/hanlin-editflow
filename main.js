@@ -9,7 +9,7 @@ const articles = [
     { id: 6, slug: '', title: '發插畫注意事項', subtitle: '教科書製作', cover: './image/article-6-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 7, slug: '', title: '用色規範', subtitle: '教科書製作', cover: './image/article-7-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 8, slug: '', title: '封面設計流程與注意事項', subtitle: '教科書製作', cover: './image/article-8-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 9-1, slug: '', title: '著作權法與出版編務手冊', subtitle: '基礎通識', cover: './image/article-9-cover.jpg', summary: '尚未開放，敬請期待' },
+    { id: 9-1, slug: '', title: '著作權法與出版編務手冊', subtitle: '基礎通識', cover: './image/article-9-1-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 9-2, slug: '', title: '肖像權編輯手冊', subtitle: '基礎通識', cover: '', summary: '尚未開放，敬請期待' },
     { id: 10, slug: '', title: '內容授權流程（文、圖、照片）', subtitle: '基礎通識', cover: './image/article-10-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 11, slug: '', title: '版面規劃與亮點發想', subtitle: '教科書製作', cover: './image/article-11-cover.jpg', summary: '尚未開放，敬請期待' },
@@ -18,7 +18,7 @@ const articles = [
     { id: 15, slug: '', title: '國中實體書->電子書進稿流程及注意事項', subtitle: '教科書製作', cover: './image/article-15-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 16, slug: '', title: '國小實體書->電子書進稿流程及注意事項', subtitle: '教科書製作', cover: './image/article-16-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 18, slug: '', title: '課本呈現組成及相關製作流程', subtitle: '教科書製作', cover: './image/article-18-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 19-1, slug: '', title: '送製流程', subtitle: '教科書製作', cover: './image/article-19-cover.jpg', summary: '尚未開放，敬請期待' },
+    { id: 19-1, slug: '', title: '送製流程', subtitle: '教科書製作', cover: './image/article-19-1-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 19-2, slug: '', title: '品檢流程、彩稿管理', subtitle: '教科書製作', cover: '', summary: '尚未開放，敬請期待' },
     { id: 20, slug: '', title: '成書檢核及異常回報', subtitle: '教科書製作', cover: './image/article-20-cover.jpg', summary: '尚未開放，敬請期待' },
     { id: 21, slug: '', title: '跑校注意事項', subtitle: '教科書市場服務', cover: './image/article-21-cover.jpg', summary: '尚未開放，敬請期待' },
@@ -133,7 +133,7 @@ function renderHomeCards(items) {
             </a>` : `<span class="text-gray-400 text-sm cursor-not-allowed">內容建置中</span>`;
 
         return `
-            <div class="article-card bg-white border border-gray-100 group relative flex flex-col h-full ${!hasLink ? 'opacity-70' : ''}">
+            <div class="article-card bg-white border border-gray-100 group relative flex flex-col h-full ${!hasLink ? 'opacity-50' : ''}">
                 ${linkTagStart} class="block overflow-hidden rounded-t-xl cursor-pointer">
                     <img src="${cover}" alt="${item.title}" class="w-full h-48 object-cover transform transition duration-300 group-hover:scale-105">
                 ${linkTagEnd}
