@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>諮詢會議（多人會議或1對1訪談） | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>諮詢會議（多人會議或1對1訪談）</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>諮詢會議工作流程</h2>
+                <h4>1. 目的</h4>
+                <p>為讓所研發的教材能符合老師教學，適合學生學習，特舉辦諮詢會議，提供作者團隊諮詢意見，致使教材品質更臻完善，特制定本辦法。</p>
+
+                <h4>2. 適用範圍</h4>
+                <p>小、中、高教科書研發。</p>
+
+                <h4>3. 職責</h4>
+                <ul>
+                    <li>領域負責審本諮詢活動規劃執行；企劃負責成書諮詢活動規劃執行；行銷處配合諮詢老師協尋及活動支援。</li>
+                    <li>教研、數位企劃、美編配合參與會議。</li>
+                </ul>
+
+                <h4>4. 作業程序</h4>
+                <ul>
+                    <li><strong>諮詢對象</strong>：諮詢老師是指編撰團隊以外的人士。</li>
+                    <li><strong>諮詢目的</strong>：提供意見給編撰團隊、文編、美編、企劃、教研、數位及領域經理人，作為編修教材的參考。</li>
+                    <li><strong>諮詢老師來源</strong>：
+                        <ul class="list-circle ml-4 mt-2">
+                            <li>對自然教學頗有研究及熱心，若具有輔導團或為該校領域召集人的資格更佳。</li>
+                            <li>為諮詢座談或諮詢本而邀約之老師，費用按場次給付及以件計酬制。</li>
+                            <li>諮詢老師應適時檢視並進行增補或汰換，以更換新血來帶動新鮮概念活化組織。諮詢老師出席座談會卻沒提供有建設性意見或態度消極，應註記於諮詢名單中，並通知該區區經理不再邀約。</li>
+                            <li>為顧及諮詢會議品質，諮詢會議參與諮詢老師，應至少5位以上。</li>
+                        </ul>
+                    </li>
+                    <li><strong>諮詢作業階段 (依時間軸) </strong>：
+                        <ul class="list-circle ml-4 mt-2">
+                            <li>開編階段(出版前)→新編或修訂之送審冊次課程<strong>架構諮詢</strong>(依各領域需求進行)。</li>
+                            <li>編撰階段(出版前)→蒐集教師對審本定稿後之教材意見，針對知識正確性、課文敘述邏輯性、圖照合適性、是否符合課綱等給予意見。</li>
+                            <li><strong>定稿諮詢</strong>：送審前諮詢。</li>
+                            <li><strong>審本諮詢</strong>：各審次審本諮詢(依各領域需求進行)。</li>
+                            <li>成書階段(出版後)→<strong>成書諮詢</strong>：教材上市後教師實際使用的教材意見蒐集及記錄。</li>
+                            <li>「諮詢作業階段一覽表」(附件一)</li>
+                        </ul>
+                        <figure>
+                            <img src="./image/article-14-1.jpg" alt="圖 14-1">
+                            <figcaption>圖 14-1：諮詢作業階段一覽表(附件一)</figcaption>
+                        </figure>
+                    </li>
+                    <li><strong>執行作業事項</strong>：
+                        <ul class="list-circle ml-4 mt-2">
+                            <li>由負責單位與行銷處確認座談會的場次、地點和時間。</li>
+                            <li>確認各場次參與人員及出席老師。</li>
+                            <li>由負責單位提報諮詢規劃書(附件二、附件三)，經過簽呈核准後推動執行。</li>
+                            <figure>
+                                <img src="./image/article-14-2.jpg" alt="圖 14-2">
+                                <figcaption>圖 14-2：提報諮詢規劃書(附件二)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-3.jpg" alt="圖 14-3">
+                                <figcaption>圖 14-3：提報諮詢規劃書(附件三)</figcaption>
+                            </figure>
+                            <li>會前準備：詳細內容可參考工作分工一覽表(附件四)、諮詢會議工作流程圖(附件五)</li>
+                            <ul class="list-circle ml-4 mt-2">
+                                <li>確認舉辦場次及時間</li>
+                                <li>確認舉辦場次及時間</li>
+                                <li>確認出席名單</li>
+                                <li>製作桌名牌(附件六)</li>
+                                <li>製作迎賓海報(附件七)</li>
+                                <li>製作諮詢費收據(附件八)</li>
+                                <li>預支諮詢會議費用(含諮詢費、餐點及場地費)</li>
+                                <li>預定場地及餐點(發票或合格收據，須打統編)</li>
+                                <li>確認交通事宜</li>
+                                <li>準備諮詢稿件(諮詢本、現行版教科書等)</li></ul>
+                            <figure>
+                                <img src="./image/article-14-4.jpg" alt="圖 14-4">
+                                <figcaption>圖 14-4：工作分工一覽表(附件四)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-5.jpg" alt="圖 14-5">
+                                <figcaption>圖 14-5：諮詢會議工作流程圖(附件五)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-6.jpg" alt="圖 14-6">
+                                <figcaption>圖 14-6：桌名牌-1(附件六)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-7.jpg" alt="圖 14-7">
+                                <figcaption>圖 14-7：桌名牌-2(附件六)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-8.jpg" alt="圖 14-8">
+                                <figcaption>圖 14-8：諮詢費收據(附件八)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-9.jpg" alt="圖 14-9">
+                                <figcaption>圖 14-9：諮詢費收據(附件八)</figcaption>
+                            </figure>
+
+                            <li>會議執行及注意事項：詳細內容可參考工作分工一覽表(附件四)、諮詢會議工作流程圖(附件五)</li>
+                            <ul class="list-circle ml-4 mt-2">
+                                <li>布置場地及安排座位</li>
+                                <li>確認投影設備</li>
+                                <li>點收及發放餐點</li>
+                                <li>檢查諮詢費收據填寫資料是否詳備(地址含鄰里) </li>
+                                <li>由負責單位記錄會議內容(含意見提供者姓名) </li>
+                                <li>主持人須引導各諮詢老師發言</li></ul>
+                            <figure>
+                                <img src="./image/article-14-4.jpg" alt="圖 14-4">
+                                <figcaption>圖 14-4：工作分工一覽表(附件四)</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="./image/article-14-5.jpg" alt="圖 14-5">
+                                <figcaption>圖 14-5：諮詢會議工作流程圖(附件五)</figcaption>
+                            </figure>
+
+                            <li>會議後：</li>
+                            <ul class="list-circle ml-4 mt-2">
+                                <li>諮詢資料回收(含問卷回收)</li>
+                                <li>場地恢復</li>
+                                <li>彙整會議紀錄並提供相關人員</li>
+                                <li>核銷各場次之費用 </li>
+                        </ul>
+                    </li>
+
+                </ul>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

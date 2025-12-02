@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拍照邀約及注意事項 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>拍照邀約及注意事項</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+                
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>關於攝影前須知</h2>
+                <p>教科書為傳遞知識的重要工具，除了知識性的文字外還需要搭配適切的圖照，然而插圖與照片各有其獨特的功能，根據教學目標與內容選擇不同的呈現方式，才能達到圖文整合的效果，方便老師教學及學生吸收。</p>
+                <h3>一、插畫</h3>
+                <ul>
+                    <li>抽象與概括：插畫可以簡化複雜概念，幫助學生更容易理解。</li>
+                    <li>風格多樣：插畫可根據主題與風格進行調整，增強視覺吸引力。</li>
+                    <li>創造性：插畫可以加入想象元素，鼓勵學生的創造思維。</li>
+                    <li>彈性高：插畫不受現實限制，能夠表達無法拍攝的情境或概念。</li>
+                </ul>
+                <h3>二、實照</h3>
+                <ul>
+                    <li>真實性：照片提供真實的視覺信息，幫助學生了解樣貌。</li>
+                    <li>氛圍感：照片能夠表現出更多光線與空間層次營造氛圍。</li>
+                    <li>情感表現：照片捕捉細膩的情感反應，讓學生產生更深的連結。</li>
+                    <li>整合性：照片的風格較為真實，可以利用去背合成做 2 次構圖。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-1.jpg" alt="圖 5-1">
+                    <figcaption>圖 5-1：插畫仿畫與實照拍攝</figcaption>
+                </figure>
+                <h2>一、 照片使用的時機是什麼時候？</h2>
+                <p>在教科書中，插畫和實照各有其適合的場合，以下是一些建議：</p>
+                <h3>一、插畫適用情況</h3>
+                <ul>
+                    <li>概念性內容：當需要解釋抽象概念或理論時，插畫能夠更清晰地傳達這些想法。例如，科學中的分子結構或數學圖形。</li>
+                    <li>流程圖和示意圖：用於展示步驟或過程的時候，插畫可以簡化複雜的資訊，使其更易於理解。</li>
+                    <li>創造趣味性：在某些主題上，插畫能增加趣味，例如兒童教育或藝術相關教材，能吸引學生注意力。</li>
+                    <li>風格一致性：當整體教科書需要保持一致的視覺風格時，插畫可以提供統一的圖像風格。</li>
+                </ul>
+                <h3>二、實照適用情況</h3>
+                <ul>
+                    <li>現實案例：當需要展示真實情況或案例時，實照是最有效的選擇，比如歷史事件、地理景觀或動植物的實際樣貌。</li>
+                    <li>科學實驗：在科學教科書中，實照可以幫助學生更好地理解實驗步驟和結果。</li>
+                    <li>歷史文獻：當涉及重要的歷史文獻或藝術作品時，實照能夠讓學生直接接觸到這些資料。</li>
+                    <li>文化和社會內容：展示不同文化、社會活動或人們的生活方式時，實照能提供更具說服力的視覺材料。</li>
+                </ul>
+                <p>選擇插畫或實照應根據內容的性質、目標受眾和教學目標來決定。在某些情況下，兩者可以結合使用，以達到最佳的教學效果。</p>
+                
+                
+                <h2>二、 選擇照片該注意什麼？</h2>
+                <h3>一、圖像與照片版權確</h3>
+                <p>照片版權確認，在書籍出版非常重要，需注意下列事項：</p>
+                <ul>
+                    <li>公共領域：一些圖像已進入公共領域，可自由使用，但仍需確認。</li>
+                    <li>授權使用：若使用他人作品，需獲得授權，並確認授權範圍（如印刷、電子書等）。</li>
+                    <li>自有作品：如果是自行拍攝或創作的圖像，確保擁有完整的使用權。</li>
+                </ul>
+                <p><strong>PS：拍攝人物使用時，也需留意是否取得當事人同意，簽署肖像權授權書。( 未滿 18 須徵得家長同意 )</strong></p>
+                <p>遵循上述注意事項能夠降低因版權問題而產生的法律風險，確保書籍出版的順利進行。</p>
+                
+                <h3>二、圖像與照片解析度</h3>
+                <p>在選擇照片前應該注意解析度，並應根據用途進行調整：</p>
+                <ul>
+                    <li>網頁：需要 72DPI 。</li>
+                    <li>印刷：需要 300DPI。</li>
+                </ul>
+                <p>若解析度不足會產生印刷模糊的問題。確認解析度可以確保圖照在印刷上的最佳呈現。</p>
+                <figure>
+                    <img src="./image/article-5-2.jpg" alt="圖 5-2">
+                    <figcaption>圖 5-2：圖像與照片解析度</figcaption>
+                </figure>
+                <p>同一張圖片螢幕尺寸 36 公分，印刷只剩 8 公分。</p>
+                <h2>三、 拍攝前的注意事項</h2>
+                <p>在拍攝之前，有一些注意事項需要考慮，以確保拍攝質量和效果：</p>
+                <ul>
+                    <li>確定拍攝目的：如宣傳、內頁插圖、封面……等，這將影響拍攝風格和技術。</li>
+                    <li>設備準備：例如高階相機、鏡頭、閃燈、腳架等器材。</li>
+                    <li>光線考量：自然光與人造光源。</li>
+                    <li>背景設置：背景的選擇與被攝物的搭配。</li>
+                    <li>照片的呈現：照片的構圖與版面搭配方式。</li>
+                    <li>照片的使用：事先規範圖照使用如去背圖、步驟圖合成圖……等。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-3.jpg" alt="圖 5-3">
+                    <figcaption>圖 5-3：設備準備</figcaption>
+                </figure>
+                <h2>四、拍攝流程</h2>
+                <p>熟悉拍攝流程對於照片品質有著重要的影響，主要體現在以下幾個方面：</p>
+                <ul>
+                    <li><strong>前期準備</strong><br>預先了解主題、場地和光線條件，可幫助攝影師選擇合適的設備和設置，避免拍攝浪費時間。</li>
+                    <li><strong>構圖技巧</strong><br>掌握構圖原則（如三分法則、對稱等）能夠提升照片的視覺吸引力，使畫面更加平衡和和諧。</li>
+                    <li><strong>光線運用</strong><br>熟悉自然光和人造光的特性，能夠有效控制曝光和陰影，從而提升照片的質感和層次感。</li>
+                    <li><strong>器材配置</strong><br>針對不同環境，攝影師需要提前準備不同的器材，方能確保達到預期的圖像品質。</li>
+                    <li><strong>後期處理</strong><br>拍攝後的調整（如裁剪、色彩校正等）對最終照片品質也至關重要，熟悉後期處理軟體能夠進一步提升照片的專業感。</li>
+                    <li><strong>經驗積累</strong><br>隨著拍攝經驗的增加，攝影師能夠更快地反應並調整拍攝策略，以適應不斷變化的環境和條件，從而提升作品的整體水平。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-4.jpg" alt="圖 5-4">
+                    <figcaption>圖 5-4：拍攝流程</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-5-5.jpg" alt="圖 5-5">
+                    <figcaption>圖 5-5：照片規劃</figcaption>
+                </figure>
+                <p>攝影前若能有確認照片規劃，能使整體編排過程更順利。</p>
+                <h2>五、人物</h2>
+                <p>在拍攝前確認模特兒與人數的因素非常重要，以下是幾個關鍵考量：</p>
+                <ul>
+                    <li><strong>主題與風格</strong><br>根據拍攝主題和風格，決定模特兒人數，例如團體照或個人肖像等，這些都會影響所需的模特兒數量。</li>
+                    <li><strong>場地空間</strong><br>考慮拍攝場地的大小和佈局，確保能夠容納所需的人數，避免擁擠或空曠的情況影響照片的構圖。</li>
+                    <li><strong>協調與溝通</strong><br>與模特兒確認拍攝時間、地點和主題， 確保他們理解拍攝的要求，以便能夠更好地進行配合。</li>
+                    <li><strong>角色分配</strong><br>若拍攝涉及多個角色，需明確每位模特兒的角色及其在照片中的定位，這樣能讓拍攝更加流暢。</li>
+                    <li><strong>服裝與造型</strong><br>提前確認模特兒的服裝和造型，確保符合拍攝的主題和風格，也要考慮服裝的數量和變換。</li>
+                    <li><strong>預算考量</strong><br>根據預算確定模特兒的人數，合理安排成本，確保拍攝計劃的可行性。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-6.jpg" alt="圖 5-6">
+                    <figcaption>圖 5-6：人物確認</figcaption>
+                </figure>
+                <p>不同的器材與佈光都會呈現不同的效果，事先與攝影師溝通能使照片更符合預期效果。</p>
+                <figure>
+                    <img src="./image/article-5-7.jpg" alt="圖 5-7">
+                    <figcaption>圖 5-7：不同的器材與佈光呈現不同的效果1</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-5-8.jpg" alt="圖 5-8">
+                    <figcaption>圖 5-8：不同的器材與佈光都會呈現不同的效果2</figcaption>
+                </figure>
+                <h2>六、拍攝內容</h2>
+                <p>書籍頁面設計與攝影之間有著密切的關聯性，以下是幾個主要方面：</p>
+                <ul>
+                    <li><strong>視覺吸引力</strong><br>攝影常用於書籍的封面、內頁或插圖，專業影像可增強書籍視覺吸引力，使讀者更容易被吸引。</li>
+                    <li><strong>排版與構圖</strong><br>需要考慮文字與圖片之間的關係。好的排版能夠使照片和文字相輔相成，避免視覺上的混亂。</li>
+                    <li><strong>色彩搭配</strong><br>相片的色彩可以影響整體頁面的色調與氛圍，攝影計師需要根據版面來選擇合適的背景和顏色。</li>
+                    <li><strong>空間運用</strong><br>頁面需考慮圖片和文字空間分配，合理的空間可以讓頁面看起來更整潔，並引導讀者的視線。</li>
+                    <li><strong>主題一致性</strong><br>整本書攝影風格應保持一致，這樣能增強整體的協調性，讓讀者翻閱時感受到統一的視覺語言。</li>
+                    <li><strong>注意事項</strong><br>避免敏感符號（政治、宗教）或是引起爭議的拍攝內容如危險動作、歧視性元素）。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-9.jpg" alt="圖 5-9">
+                    <figcaption>圖 5-9：頁面設計與攝影關聯圖</figcaption>
+                </figure>
+                <h2>七、場地與燈光</h2>
+                <p>拍攝場地與攝影器材之間的關聯性非常重要，以下是幾個主要方面：</p>
+                <ul>
+                    <li><strong>場地大小與器材選擇</strong><br>拍攝場地的大小會影響攝影器材的選擇。例如燈光的數量與使用的方式，電源的需求等等。</li>
+                    <li><strong>後期處理</strong><br>場地的顏色和光線可能需要在後期進行調整，因此選擇正確器材會有助於後期的編輯工作。</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-5-10.jpg" alt="圖 5-10">
+                    <figcaption>圖 5-10：場地與器材關聯性</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-5-11.jpg" alt="圖 5-11">
+                    <figcaption>圖 5-11：光線的分布</figcaption>
+                </figure>
+                <p>燈光使用上需注意光線的分布有利於後製調整。</p>
+                <h2>八、通知確認</h2>
+                <p>前期模特兒、攝影師、場地、造型等時間確認之後，需要將相關資訊提供當天需要到場相關人等，確保後續順利進行。</p>
+                <figure>
+                    <img src="./image/article-5-12.jpg" alt="圖 5-12">
+                    <figcaption>圖 5-12：通知確認</figcaption>
+                </figure>
+                <h2>九、清點道具</h2>
+                <p>拍攝前一天再次確認拍攝所需之道具與器材，確保拍攝萬無一失。</p>
+                <figure>
+                    <img src="./image/article-5-13.jpg" alt="圖 5-13">
+                    <figcaption>圖 5-13：清點道具</figcaption>
+                </figure>
+                <figure>
+                    <img src="./image/article-5-14.jpg" alt="圖 5-14">
+                    <figcaption>圖 5-14：背景勿過度複雜</figcaption>
+                </figure>
+                <p>拍攝時需留意背景勿過度複雜影響主體視覺。</p>
+                <figure>
+                    <img src="./image/article-5-15.jpg" alt="圖 5-15">
+                    <figcaption>圖 5-15：盡量高對比、乾淨背景</figcaption>
+                </figure>
+                <p>拍攝去背照，盡量高對比、乾淨背景凸顯主體。</p>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>
