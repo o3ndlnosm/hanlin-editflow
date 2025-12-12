@@ -17,13 +17,13 @@ const articles = [
     { id: 14, slug: 'article-14', title: '校對規範及流程', subtitle: '教科書製作', cover: './image/article-14-cover.jpg', summary: '掌握標準校對符號與多層次審閱流程，透過嚴謹的品管機制確保教材零失誤。' },
     { id: 15, slug: 'article-15', title: '國中實體書->電子書進稿流程及注意事項', subtitle: '教科書製作', cover: './image/article-15-cover.jpg', summary: '檔案轉交數位製作的標準集檔流程，涵蓋命名規範與權限管理機制。' },
     { id: 16, slug: 'article-16', title: '國小實體書->電子書進稿流程及注意事項', subtitle: '教科書製作', cover: './image/article-16-cover.jpg', summary: '檔案轉交數位製作的標準集檔流程，涵蓋命名規範與權限管理機制。' },
-    { id: 17, slug: '', title: '課本呈現組成及相關製作流程', subtitle: '教科書製作', cover: './image/article-17-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 18, slug: '', title: '送製流程', subtitle: '教科書製作', cover: './image/article-18-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 19, slug: '', title: '品檢流程、彩稿管理', subtitle: '教科書製作', cover: './image/article-19-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 20, slug: '', title: '成書檢核及異常回報', subtitle: '教科書製作', cover: './image/article-20-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 21, slug: '', title: '跑校注意事項', subtitle: '教科書市場服務', cover: './image/article-21-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 22, slug: '', title: '教材說明會如何講', subtitle: '教科書市場服務', cover: './image/article-22-cover.jpg', summary: '尚未開放，敬請期待' },
-    { id: 23, slug: '', title: '客訴處理流程及回覆注意事項', subtitle: '教科書市場服務', cover: './image/article-23-cover.jpg', summary: '尚未開放，敬請期待' }
+    { id: 17, slug: 'article-17', title: '課本呈現組成及相關製作流程', subtitle: '教科書製作', cover: './image/article-17-cover.jpg', summary: '掌握課本組成規格與加工細節，釐清特殊設計評估與開單作業的標準流程。' },
+    { id: 18, slug: 'article-18', title: '送製流程', subtitle: '教科書製作', cover: './image/article-18-cover.jpg', summary: '掌握送製的關鍵時程，詳解ERP開單、彩稿檢核與系統簽核流程。' },
+    { id: 19, slug: 'article-19', title: '品檢流程、彩稿管理', subtitle: '教科書製作', cover: './image/article-19-cover.jpg', summary: '詳解裝訂前的品質檢核步驟，並釐清內容修正與印刷瑕疵的重印處理機制。' },
+    { id: 20, slug: 'article-20', title: '成書檢核及異常回報', subtitle: '教科書製作', cover: './image/article-20-cover.jpg', summary: '介紹成書檢查項目，並詳解從輕微瑕疵到重大失誤的異常通報與處置規範。' },
+    { id: 21, slug: 'article-21', title: '跑校注意事項', subtitle: '教科書市場服務', cover: './image/article-21-cover.jpg', summary: '詳解校訪行前準備、現場執行與會後追蹤流程，有效蒐集回饋並建立教師關係。' },
+    { id: 22, slug: 'article-22', title: '教材說明會如何講', subtitle: '教科書市場服務', cover: './image/article-22-cover.jpg', summary: '掌握說明會行前準備與現場講述技巧，精準傳遞教材優勢以爭取學校選用。' },
+    { id: 23, slug: 'article-23', title: '客訴處理流程及回覆注意事項', subtitle: '教科書市場服務', cover: './image/article-23-cover.jpg', summary: '詳解客訴立案至結案的標準流程，並落實48小時回覆時效與異常通報機制。' }
 ];
 
 window.articles = articles; // 對外暴露資料
