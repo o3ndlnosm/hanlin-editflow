@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成書檢核及異常回報 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>成書檢核及異常回報</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>成書檢核</h2>
+                <p>收到已裝訂成冊的用書，翻閱並確認是否有異常。</p>
+
+                <h2>異常回報</h2>
+                <p>發現印刷顏色、用紙、裝訂頁數、台數，或內容有誤等異常，後續處理方式如下。</p>
+
+                <h2>依據檢核結果，有不同處理方式</h2>
+                <ul>
+                    <li>
+                        <h3>因已成冊，僅需反映問題、不需做任何重製處理時：</h3>
+                        <p>可直接上「FLOW客訴系統」反映問題。</p>
+                    </li>
+                    <li>
+                        <h3>發現重大失誤，需重新印製時：</h3>
+                        <ul>
+                            <li>經主編確認情節重大，往上呈報編審/協理決策後，確認需重新印製。</li>
+                            <li>應與行銷確認書籍到區及發送進度，研議補救辦法。</li>
+                            <li>可與編管部印務討論後續處理方式，並由印務提供重製成本以利評估。</li>
+                            <li>由權責單位提報「異常通報單」或「事故報告書」（表單詳見GOZ008「異常事項通報管理辦法」），相關單位主管協助後續追蹤改善。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

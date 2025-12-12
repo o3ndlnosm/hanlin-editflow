@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>送製流程 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>送製流程</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>送製流程及檢核</h2>
+
+                <figure>
+                    <img src="./image/article-19-1.jpg" alt="圖 19-1">
+                    <figcaption>圖 19-1-1：（請在此填寫圖說）</figcaption>
+                </figure>
+
+                <ul>
+                    <li>
+                        <p>責編與美編進行稿件末校流程，並在稿袋上簽名確認。<strong>各校次稿件須給組長和主編看過</strong></p>
+                    </li>
+                    <li>
+                        <p>美編列印出 PDF 檔彩稿後，責編開始進行最後檢查，之後找 1 位同仁交叉校對，確認無誤。</p>
+                        <ul>
+                            <li>
+                                <h3>責編、美編檢查封面條碼</h3>
+                                <ul>
+                                    <li>
+                                        <p>美編負責：依據產編製作條碼，需在封面彩稿列印後使用條碼機確認該條碼是否正確。</p>
+                                    </li>
+                                    <li>
+                                        <p>責編負責：至內部網站「編印發管理」的「出版品時程管理系統」的「產品條碼查詢」，輸入產編版次核對是否無誤，該產品若有套裝條碼，也需留意相關規範。</p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>PDF 檔若有錯誤，責編請美編修改後，必須重新印出該章節彩稿，責編、美編需再次重新進行檢查，確認無誤。</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>責編於送製日前三天應進入 ERP 系統開立出版單，並將 PDF 檔彩稿給主編審閱。</p>
+                    </li>
+                    <li>
+                        <p>文編組長完成 Flow 系統之出版單簽核後，責編將 PDF 檔彩稿拿給美編檢查。</p>
+                    </li>
+                    <li>
+                        <p>美編檢查無誤後將 PDF 檔上傳，最後美編組長完成 Flow 系統之出版單簽核。</p>
+                    </li>
+                    <li>
+                        <p>美編將 PDF 檔彩稿交還責編，責編將彩稿裁切整理並順頁後再交給編管部印務人員檢視，檢視無誤後，印務人員完成 Flow 系統之出版單簽核。</p>
+                    </li>
+                    <li>
+                        <p>印務人員將彩稿交還責編，再由責編寄給台南生產部印前組。</p>
+                    </li>
+                    <li>
+                        <p>生產部將印製之半成品（尚未裝訂之印刷品）交付編管部，印務人員再交由責編、美編進行檢查，檢查無誤後並於「印製後裝訂前品質檢核與可進行裝訂同意書」簽名。</p>
+                    </li>
+                </ul>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

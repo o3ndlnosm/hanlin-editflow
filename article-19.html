@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品檢流程、彩稿管理 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>品檢流程、彩稿管理</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>品檢結果是否需要重印的流程</h2>
+
+                <h2>一、品檢流程：</h2>
+                <p>生產部或委外廠商將印刷完成、尚未裝訂之半成品交付編管部，由印務檢視全冊台數皆完備齊全，經權責單位負責人員檢視並確認，檢查無誤後於【印刷後、裝訂前品質檢核與裝訂同意書】上簽名。</p>
+
+                <figure>
+                    <img src="./image/article-19-2-1.jpg" alt="圖 19-2-1">
+                    <figcaption>圖 19-2-1：(請在此填寫圖說)</figcaption>
+                </figure>
+
+                <h2>二、裝訂同意書注意事項：</h2>
+                <ul>
+                    <li>領域主編及美編組長簽核欄位不可空白，若無法親簽需請代理人協助處理。</li>
+                    <li>領域、美編檢視順序可視情況調整（例如：美編檢視後再給領域）。</li>
+                    <li>各單位收到品檢後應盡快確認完畢，由印務於收到當日回傳同意書給生產單位，以利生產端安排後續作業。若當日無法完成檢核流程，需提早告知印務。若遇急件請各關卡負責人務必於下午3點簽核完畢，並交付印務。
+                    </li>
+                    <li>完成裝訂同意書流程後，印務會將品檢本及彩稿一併歸還給責任文編留存。應同步留存至該冊次課程結束後。</li>
+                </ul>
+
+                <h2>三、重印流程：</h2>
+                <h3>(一) 發現內容需再修改：</h3>
+                <ul>
+                    <li>當領域或美編檢視品檢本，發現重大錯誤需重印時，應立即通知印務。</li>
+                    <li>印務確認印量及重印台數後，提供印製成本給責任單位，由責任單位上報編審或協理決策，或再上呈行銷處裁決，確認是否重製。</li>
+                    <li>如確認需重印，需同步通知編務及印務，進行後續勘誤出版單的送製。</li>
+                    <li>責任單位同步填寫「異常通報單」或「事故報告書」，上呈相關單位簽核（表單詳見GOZ008「異常事項通報管理辦法」）。</li>
+                </ul>
+
+                <h3>(二) 印刷顏色有重大瑕疵需重印：</h3>
+                <ul>
+                    <li>當領域或美編檢視品檢本，發現印刷顏色有重大瑕疵需重印時，應請示編審或協理，並上呈行銷處確認重製時間是否符合需求日。</li>
+                    <li>如確定需重印，應立即通知印務及編管部單位主管。</li>
+                    <li>由編管單位主管與生產單位主管協調重印事宜，如無法凝聚共識，則上呈營運長進行裁決。</li>
+                    <li>異常通報單由印務填寫，上呈相關單位簽核。</li>
+                </ul>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

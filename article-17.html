@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課本呈現組成及相關製作流程 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>課本呈現組成及相關製作流程</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>課本呈現組成及相關製作流程</h2>
+
+                <h3>規劃、成本評估、時程評估</h3>
+                <ul>
+                    <li>送審前完成頁數規劃。</li>
+                    <li>送審前完成附件設計。</li>
+                    <li>附件於送審前先諮詢印務組討論成本、工時及可行性。</li>
+                    <li>特殊設計至少於送審前一個月諮詢印務組。</li>
+                    <li>特殊設計必要時於三審後先製作打樣。</li>
+                </ul>
+
+                <h3>生產製作注意事項</h3>
+                <p>依循「常態製造清單」、「生產製作討論單」辦理。</p>
+
+                <h3>開單注意事項</h3>
+                <ul>
+                    <li>產編版次、產品名稱、全書組成內容確認正確。</li>
+                    <li>封面書背尺寸填寫正確。</li>
+                    <li>開數(封面、內頁等尺寸)填寫正確。</li>
+                    <li>頁數填寫正確。</li>
+                    <li>台數填寫正確。</li>
+                    <li>面數填寫正確。</li>
+                    <li>色彩數填寫正確。</li>
+                    <li>左右翻填寫正確。</li>
+                    <li>裝訂方式填寫正確。</li>
+                    <li>組版順序的描述填寫正確。</li>
+                    <li>機種填寫正確。</li>
+                    <li>組版順序之色彩數填寫正確。</li>
+                    <li>組版倍數填寫正確。</li>
+                    <li>加工明細填寫正確。</li>
+                    <li>非全彩4色的台數使用何色。</li>
+                    <li>全書如有審定字號、ISBN碼填寫正確。</li>
+                    <li>生產品號、屬性填寫正確。</li>
+                    <li>下一關卡指定人員(美編)填寫正確。</li>
+                </ul>
+
+                <h3>特殊設計如附件、貼紙、卡紙、膠片等，及相關流程與時程</h3>
+                <p>依循「常態製造清單」、「生產製作討論單」辦理。</p>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

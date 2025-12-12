@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國小實體書->電子書進稿流程及注意事項 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>國小實體書->電子書進稿流程及注意事項</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>一、集檔流程</h2>
+                <figure>
+                    <img src="./image/article-15-1.jpg" alt="圖 15-1">
+                </figure>
+
+                <h2>二、數位資源庫功能說明</h2>
+                <figure>
+                    <img src="./image/article-15-2.jpg" alt="圖 15-2">
+                </figure>
+                <figure>
+                    <img src="./image/article-15-3.jpg" alt="圖 15-3">
+                </figure>
+
+                <h2>三、檔案上傳規範 (含檔名規範、多媒體音量規範)</h2>
+
+                <h3>1. 檔名規範：序號＋年度＋學制＋領域＋年級(1)＋學期＋科目＋產品＋章(課)＋其他</h3>
+
+                <h4>1.規範說明</h4>
+                <ul>
+                    <li>國中的年級標示統一為1、2、3。</li>
+                    <li>符號的運用以「清楚識別」為使用原則。</li>
+                </ul>
+
+                <h4>2.範例</h4>
+                <p><strong>A. 教科書PDF：</strong></p>
+                <ul>
+                    <li>01-113國小社會3上課本-目次-0604.pdf</li>
+                    <li>01-113國中社會1下地理課本-目次-0604.pdf</li>
+                </ul>
+                <p><strong>B. 影音：</strong>01-XXXXXXXX.mp4</p>
+
+                <h3>2. 多媒體音量規範</h3>
+                <ul>
+                    <li>MP3音量標準：92dB (可接受正負 2 dB 以內差異，以 MP3Gain 軟體測量)</li>
+                    <li>MP4音量標準：94dB (可接受正負 2 dB 以內差異，以 MP3Gain / Xmedia Recode 軟體測量)</li>
+                </ul>
+                <p>❖ 詳細文件請參閱2025/4/30內聯單(數位聯)<br>
+                    自114上學期起陸續統一各式媒體來源音量</p>
+
+                <h2>四、資料夾狀態（未完整➜已完整➜鎖定）</h2>
+                <figure>
+                    <img src="./image/article-15-4.jpg" alt="圖 15-4">
+                </figure>
+                <h4>※ 說明：</h4>
+                <ul>
+                    <li>資料夾狀態若是禁止上傳，表示此資料夾是不放檔案的，通常是樹狀結構的上層或中間層。</li>
+                    <li>資料夾狀態在未完整或已完整時，上傳人員還可以上傳或刪除檔案；若進入鎖定狀態後，則禁止再上傳等異動，如此可避免版本錯亂，若有必要異動，必須透過解鎖人員變更狀態後，才能再異動。</li>
+                </ul>
+
+                <h2>五、資料夾開立時程與人員權限設定</h2>
+                <h3>資料夾預計開立時程：</h3>
+                <ul>
+                    <li>上學期10月底、下學期5月底（預計上傳初審本時間）</li>
+                </ul>
+                <h3>人員權限（上傳／鎖定／下載）設定：</h3>
+                <ul>
+                    <li>數位部在領域小組確認權限人員是否有異動</li>
+                    <li>若需增加／修改權限人員，請向數位部各領域窗口（數位企編／編輯）提出權限設定</li>
+                    <li>若無對應窗口請單位主管找數位部科主管申請，再由科主管指派對應人員處理</li>
+                </ul>
+
+                <h2>六、Email通知</h2>
+                <figure>
+                    <img src="./image/article-15-5.jpg" alt="圖 15-5">
+                </figure>
+                <figure>
+                    <img src="./image/article-15-6.jpg" alt="圖 15-6">
+                </figure>
+
+                <h2>七、常見Q&A</h2>
+                <h3>上傳錯檔案，如何「刪除」檔案?</h3>
+                <p>※ 如果想刪除整包資料夾，須先把資料夾裡的檔案全部刪除，才能刪除資料夾</p>
+                <figure>
+                    <img src="./image/article-15-7.jpg" alt="圖 15-7">
+                </figure>
+                <h3>美編上傳檔案改為「已完整」，編輯如何鎖定？</h3>
+                <figure>
+                    <img src="./image/article-15-8.jpg" alt="圖 15-8">
+                </figure>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

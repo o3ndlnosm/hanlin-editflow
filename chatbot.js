@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // ================= 設定區 =================
-    const DIFY_API_KEY = '請在此填入您的_DIFY_API_KEY'; 
-    const DIFY_API_URL = 'http://dify.hle.com.tw/v1/chat-messages';
+    const DIFY_API_KEY = 'app-EuT97DrkGQfgOpWIHPwsgFgo';
+    const DIFY_API_URL = 'https://dify.hle.com.tw/v1/chat-messages';
     // =========================================
 
     // 1. 注入 HTML 結構 (動態生成，不用手動貼 HTML 了)
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputField = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const messagesContainer = document.getElementById('chat-messages');
-    
+
     let userId = localStorage.getItem('dify_user_id');
     if (!userId) {
         userId = 'user_' + Math.random().toString(36).substr(2, 9);
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         inputField.value = '';
         inputField.disabled = true;
 
-        const loadingId = addMessage('正在思考中...', 'bot', true); 
+        const loadingId = addMessage('正在思考中...', 'bot', true);
 
         try {
             const response = await fetch(DIFY_API_URL, {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     "inputs": {},
                     "query": text,
                     "response_mode": "blocking",
-                    "conversation_id": "", 
+                    "conversation_id": "",
                     "user": userId
                 })
             });
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const div = document.createElement('div');
         div.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
         div.textContent = text;
-        
+
         if (isLoading) {
             div.id = 'loading-msg';
             div.style.fontStyle = 'italic';

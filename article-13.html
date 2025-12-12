@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>版面規劃與亮點發想 | 翰林北研編輯手冊</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./hanlin-config.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <div id="site-header"></div>
+
+    <div id="sitemap-backdrop" onclick="closeSitemap()"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity opacity-0"></div>
+    <div id="sitemap-panel"
+        class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform flex flex-col">
+        <div class="px-6 py-4 border-b bg-blue-50 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-hanlin-blue">手冊目錄</h2>
+            <button onclick="closeSitemap()" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg></button>
+        </div>
+        <div class="flex-grow overflow-y-auto p-6 space-y-4">
+            <div id="sitemap-list" class="space-y-4"></div>
+        </div>
+        <div class="p-4 bg-gray-50 text-center text-xs text-gray-400">&copy; 2024 翰林北研編輯手冊</div>
+    </div>
+
+    <main class="flex-grow py-12 sm:py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 內容容器 -->
+            <div class="bg-white p-8 sm:p-12 rounded-2xl shadow-xl border-t-4 border-hanlin-gold article-content">
+
+                <!-- 主標題 -->
+                <h1>版面規劃與亮點發想</h1>
+
+                <!-- 引言區塊 - 改用 hanlin-pale 底色 + hanlin-blue 邊框 -->
+
+
+                <!-- ==================== 第一部分 ==================== -->
+                <h2>翰林文編需要具備的能力</h2>
+
+                <h3>文編的角色 ―― 在圖文之間串連教學與設計</h3>
+                <p>要有效引導落版會議與視覺溝通，文編應具備以下基本能力：</p>
+                <ul>
+                    <li>
+                        <strong>理解整體教學脈絡與企劃目的</strong>：文編不僅需理解作者的教學理念，也須掌握課本整體的策略方向與學科知識目的，協助轉化為具體教材內容。
+                    </li>
+                    <li>
+                        <strong>具備基礎落版與版面概念</strong>：了解使用者的閱讀動線、課本的資訊層級與版面邏輯，才能與美編討論圖像配置與優化方式。
+                    </li>
+                    <li>
+                        <strong>依據教學現場規劃合適的圖解活動</strong>：站在市場與使用者（教師、學生）的角度思考，設計能引起動機或符合教學目標的互動任務及圖表。
+                    </li>
+                    <li>
+                        <strong>精準說明插圖的教學目的與功能</strong>：明確判斷插圖的需求，並確認插圖符合必要性、說明性、順序性與一致性。
+                    </li>
+                    <li>
+                        <strong>善用參考圖示作為溝通媒介</strong>：以類似風格或構圖的參考圖說明視覺需求，提
+                    </li>
+                </ul>
+
+                <h3>進行課本設計前，編輯需要熟悉的內容</h3>
+                <h4>課本的閱讀動線</h4>
+                <p>※ 以國中歷史課本為例</p>
+                <figure>
+                    <img src="./image/article-13-1.jpg" alt="圖 13-1">
+                </figure>
+                <p>擺脫 word 單頁排版的閱讀形式，以一個跨頁作為動線思考，整合課文和插圖。</p>
+
+                <h4>請美編提供版型與常用字數規範</h4>
+                <p>※ 以高中公民版型為例</p>
+                <figure>
+                        <img src="./image/article-13-2.jpg" alt="圖 13-2">
+                    </figure>
+
+
+                <h4>熟悉各種圖例及功能規範</h4>
+                <p>※ 以高中公民版型為例</p>
+                <figure>
+                        <img src="./image/article-13-3.jpg" alt="圖 13-3">
+                    </figure>
+                
+
+                <h2>設計與規劃｜進行「落版會議」</h2>
+                <h3>落版是什麼？我們為什麼需要進行落版？</h3>
+                <p>
+                    正式進入內頁排版前，建議先使用手繪落板的方式進行構想，將腦中的發想先在紙上大略整理，並可將文字與圖像以代碼標示，初步擬定出要使用什麼方式來呈現知識內容。手繪落版稿也是作者、編輯、插畫、設計之間溝通的共識與藍圖，大家能以此為依據來進行後續的執行工作。
+                </p>
+                <figure>
+                    <img src="./image/article-13-4.jpg" alt="圖 13-4">
+                </figure>
+
+                <h3>如果沒有落版 ……</h3>
+                <ul>
+                    <li><strong>圖表設計與閱讀動線受到版面限制</strong>：複雜的圖像或表格可能無法清楚呈現於單一跨頁，需要重新設計、拆解或重新安置。</li>
+                    <li><strong>內容資訊需轉譯為圖像，美編難以直接視覺化</strong>：原文稿中雖有圖像需求，但未具體說明視覺結構或教學重點，美編需要花費時間理解與討論。</li>
+                    <li><strong>美編完成的版面與文編預期不一致</strong>：文編可能未清楚說明圖文之間的邏輯關係，導致美編解讀錯誤、圖像錯位或教學意義模糊。</li>
+                </ul>
+
+                <h3>落版會議可以解決哪些問題？</h3>
+                <ul>
+                    <li>這一頁的編排是否有符合主要教學目的？</li>
+                    <li>內容安排是否有符合閱讀動線？</li>
+                    <li>圖文之間的關係是否能相互對應？</li>
+                    <li>資訊圖表應該如何編排？</li>
+                    <li>頁面是否有足夠空間呈現這些元素？</li>
+                    <li>預期的閱讀動線是什麼？會不會被打斷？</li>
+                </ul>
+                <figure>
+                    <img src="./image/article-13-5.jpg" alt="圖 13-5">
+                </figure>
+
+                <h2>設計與規劃｜我可以從哪些角度思考落版？</h2>
+
+                <h3>切入點 1. 從無到有</h3>
+                <p>
+                    當開發全新教材時，文編與美編需要從零開始規劃整體的版面架構。美編需先建立出基本版型，提供單頁或跨頁的編排模版，以及建議的字數限制；文編則需熟悉這些版型規則（欄位安排、標題層級、欄寬限制等），並根據作者初步文稿，先規劃出大致的文字與圖像比例與順序。
+                </p>
+
+                <h3>執行流程</h3>
+                <figure>
+                    <img src="./image/article-13-7.jpg" alt="圖 13-7">
+                </figure>
+                <h4>落版會議的流程</h4>
+                <p>※ 以高中公民版型為例</p>
+                <figure>
+                    <img src="./image/article-13-6.jpg" alt="圖 13-6">
+                </figure>
+                
+                <figure>
+                    <img src="./image/article-13-8.jpg" alt="圖 13-8">
+                </figure>
+
+                <h3>切入點 2. 改造 / 編修</h3>
+                <p>
+                    當教材進入編修或重製階段，編輯的任務就從「建立」轉為「判斷與調整」，首先要釐清哪些圖文元素可以調整、哪些則無法改動。針對可調整的部分，文編需與企劃對焦：「我們為什麼要改？這次改版想達成什麼樣的教學目的？」
+                </p>
+                <h4>改造編修的檢核點（從公司、老師、學生…等的角度思考）：</h4>
+                <ul>
+                    <li>公司 - 編修目標是什麼？是否符合公司策略？</li>
+                    <li>公司 - 老師的建議五花八門，要如何判斷其重要性？</li>
+                    <li>老師 - 編修版本能否提升老師的教學流程、便利性</li>
+                    <li>老師 - 目前盤點的建議，是否為真實教育現場建議？</li>
+                    <li>學生 - 編修版本能讓學生更好理解？難度是否需要調整?</li>
+                </ul>
+                <h4>閱讀動線調整</h4>
+                <p>嘗試圖文搭配更好的閱讀動線</p>
+                <figure>
+                    <img src="./image/article-13-9.jpg" alt="圖 13-9">
+                </figure>
+
+                <h4>圖像的轉換</h4>
+                <p>圖像不只有照片，可以選擇適合的圖像，做適當的轉化（照片換成 icon）</p>
+                <figure>
+                    <img src="./image/article-13-10.jpg" alt="圖 13-10">
+                </figure>
+
+                <h4>圖像與文字的對應調整</h4>
+                <p>文字與圖片有更好的對應連結</p>
+                <figure>
+                    <img src="./image/article-13-11.jpg" alt="圖 13-11">
+                </figure>
+
+                <h4>圖說的閱讀動線</h4>
+                <p>將同層級的內容調整一致的設計邏輯</p>
+                <figure>
+                    <img src="./image/article-13-12.jpg" alt="圖 13-12">
+                </figure>
+
+                <h3>切入點 3. 亮點頁面 / 新企劃導入</h3>
+                <p>
+                    當教材需要融入新主題、新角色設定，或導入新的教學概念（例如角色引導、任務解謎、跨域設計等），落版思考必須回到整體企劃的源頭，編輯也須思考：
+                    「要如何讓課本的企劃更完整？主題性更鮮明？」
+                </p>
+                <h4>可以從哪些面向發想？</h4>
+                <figure>
+                    <img src="./image/article-13-13.jpg" alt="圖 13-13">
+                </figure>
+
+                <h4>加入情境與角色</h4>
+                <p>創造沈浸式的有趣體驗，讓角色陪伴孩子學習成長</p>
+                <figure>
+                    <img src="./image/article-13-14.jpg" alt="圖 13-14">
+                </figure>
+
+                <h4>結合教學議題</h4>
+                <p>打造與時俱進的學習內容</p>
+                <figure>
+                    <img src="./image/article-13-15.jpg" alt="圖 13-15">
+                </figure>
+
+                <h4>連結教學活動</h4>
+                <p>將實際生活案例以資訊圖表呈現,幫助學生理解知識點</p>
+                <figure>
+                    <img src="./image/article-13-16.jpg" alt="圖 13-16">
+                </figure>
+
+                <!-- 返回連結 -->
+                <div class="mt-10 text-center">
+                    <a href="./index.html"
+                        class="inline-flex items-center text-hanlin-blue hover:text-hanlin-sky font-bold border-b border-hanlin-blue pb-1 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        回到所有文件列表
+                    </a>
+                </div>
+            </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="./main.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>
